@@ -116,11 +116,11 @@ Given the customer doesn't have connectivity
 
 ## Flowchart
 
-![Feed Loading Feature](feed_flowchart.png)
+![Feed Loading Feature](feed_flowchart-1.png)
 
 ## Architecture
 
-![Feed Loading Feature](feed_architecture.png)
+![Feed Loading Feature](feed_architecture-2.png)
 
 ## Model Specs
 
