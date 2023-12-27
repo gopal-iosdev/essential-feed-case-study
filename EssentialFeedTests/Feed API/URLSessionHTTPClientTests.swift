@@ -202,10 +202,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 }
 
-private extension URL {
-    static let anyURL = URL(string: "https://any-url.com")!
-}
-
 private extension URLResponse {
     static let nonHTTPURLResponse = URLResponse(url: URL.anyURL, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
 }
@@ -217,8 +213,4 @@ private extension HTTPURLResponse {
 
 private extension Data {
     static let anyData = Data("any data".utf8)
-}
-
-private extension NSError {
-    static let anyError = NSError(domain: "any error", code: 0)
 }
