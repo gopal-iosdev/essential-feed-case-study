@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B19D34E2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D34D2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift */; };
 		4B3086D62A76D933001298EF /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3086D52A76D933001298EF /* URLSessionHTTPClientTests.swift */; };
 		4B46A3BC2B266C970071CA46 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B46A3BB2B266C970071CA46 /* LoadFeedFromCacheUseCaseTests.swift */; };
 		4B46A3BF2B266D900071CA46 /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B46A3BE2B266D900071CA46 /* FeedStoreSpy.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B19D34D2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		4B3086D52A76D933001298EF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		4B46A3BB2B266C970071CA46 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		4B46A3BE2B266D900071CA46 /* FeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpy.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				4B46A3BD2B266D850071CA46 /* Helpers */,
 				4B57B6BE2B02781D0085940A /* CacheFeedUseCaseTests.swift */,
 				4B46A3BB2B266C970071CA46 /* LoadFeedFromCacheUseCaseTests.swift */,
+				4B19D34D2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B19D34E2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift in Sources */,
 				4B4C900329F6C7DE005E4F68 /* LoadFeedFromRemoteFeedUseCaseTests.swift in Sources */,
 				4B3086D62A76D933001298EF /* URLSessionHTTPClientTests.swift in Sources */,
 				4B46A3BF2B266D900071CA46 /* FeedStoreSpy.swift in Sources */,
