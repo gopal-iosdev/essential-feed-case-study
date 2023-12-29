@@ -9,31 +9,25 @@ import Foundation
 
 private final class FeedCachePolicy {
     private let calendar = Calendar(identifier: .gregorian)
-    private let currentDate: () -> Date
     private var maxCacheAgeInDays: Int { 7 }
 
-    init(currentDate: @escaping () -> Date) {
-        self.currentDate = currentDate
-    }
-
-    func validate(_ timestamp: Date) -> Bool {
+    func validate(_ timestamp: Date, against date: Date) -> Bool {
         guard let maxCacheAge = calendar.date(byAdding: .day, value: maxCacheAgeInDays, to: timestamp) else {
             return false
         }
 
-        return currentDate() < maxCacheAge
+        return date < maxCacheAge
     }
 }
 
 public class LocalFeedLoader {
     private let store: FeedStore
     private let currentDate: () -> Date
-    private let cachePolicy: FeedCachePolicy
+    private let cachePolicy = FeedCachePolicy()
 
     public init(store: FeedStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
-        self.cachePolicy = FeedCachePolicy(currentDate: currentDate)
     }
 }
 
@@ -73,7 +67,7 @@ extension LocalFeedLoader: FeedLoader {
             switch result {
             case let .failure(error):
                 completion(.failure(error))
-            case let .found(feed, timestamp) where self.cachePolicy.validate(timestamp):
+            case let .found(feed, timestamp) where self.cachePolicy.validate(timestamp, against: self.currentDate()):
                 completion(.success(feed.toModels()))
             case .found, .empty:
                 completion(.success([]))
@@ -92,7 +86,7 @@ extension LocalFeedLoader {
             switch result {
             case .failure:
                 store.deleteCachedFeed { _ in }
-            case let .found(_, timestamp) where !self.cachePolicy.validate(timestamp):
+            case let .found(_, timestamp) where !self.cachePolicy.validate(timestamp, against: self.currentDate()):
                 store.deleteCachedFeed { _ in }
             case .empty, .found:
                 break
