@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-02T03:49:51.635Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="DBwoYk2S8lVEk91Vav9d" version="22.1.16" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-02T03:51:46.879Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="0cEyclXF0sKbGD6FE8zG" version="22.1.16" type="github">
   <diagram name="Version-1" id="Y2WjuvX7hO9Vn0jHDt_I">
     <mxGraphModel dx="2074" dy="1064" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="850" math="0" shadow="0">
       <root>
@@ -13,7 +13,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="kslnaKKYkAR8ZkGTqqHD-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#E6E6E6;" parent="1" source="fa2TgRjNBBgpzOrha1pa-2" target="kslnaKKYkAR8ZkGTqqHD-33" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="814" y="683" />
+              <mxPoint x="959" y="683" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="fa2TgRjNBBgpzOrha1pa-2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;FeedViewController&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#E6E6E6;strokeWidth=4;fontSize=14;fontColor=#E6E6E6;" parent="1" vertex="1">
           <mxGeometry x="709" y="708" width="140" height="44" as="geometry" />
@@ -87,6 +92,14 @@
         </mxCell>
         <mxCell id="fa2TgRjNBBgpzOrha1pa-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;dashed=1;strokeColor=#E6E6E6;fontColor=#E6E6E6;" parent="1" source="fa2TgRjNBBgpzOrha1pa-18" target="fa2TgRjNBBgpzOrha1pa-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KoEfR0-JcFAQGKNgfmnl-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;dashed=1;strokeColor=#E6E6E6;" edge="1" parent="1" source="fa2TgRjNBBgpzOrha1pa-18" target="fa2TgRjNBBgpzOrha1pa-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1554" y="139" />
+              <mxPoint x="1554" y="730" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="fa2TgRjNBBgpzOrha1pa-18" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Feed&lt;br style=&quot;font-size: 14px;&quot;&gt;Assembler/Builder/Factory&lt;br style=&quot;font-size: 14px;&quot;&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#E6E6E6;strokeWidth=4;fontColor=#E6E6E6;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="1221" y="98.5" width="200" height="80" as="geometry" />
@@ -186,7 +199,7 @@
           <mxGeometry x="671" y="544" width="398" height="102" as="geometry" />
         </mxCell>
         <mxCell id="kslnaKKYkAR8ZkGTqqHD-36" value="Feed Feature module" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=0;fontColor=#FF0000;fontStyle=0;fontSize=16;" parent="1" vertex="1">
-          <mxGeometry x="962" y="651" width="158" height="30" as="geometry" />
+          <mxGeometry x="911" y="651.6" width="158" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KoEfR0-JcFAQGKNgfmnl-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#E6E6E6;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="kslnaKKYkAR8ZkGTqqHD-37" target="kslnaKKYkAR8ZkGTqqHD-20">
           <mxGeometry relative="1" as="geometry" />
