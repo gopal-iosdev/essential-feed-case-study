@@ -131,7 +131,7 @@ Given the customer doesn't have connectivity
 
 ## Architecture
 
-![Feed Loading Feature](feed_architecture-2.png)
+![Feed Loading Feature](feed_architecture-3.png)
 
 ## Model Specs
 
