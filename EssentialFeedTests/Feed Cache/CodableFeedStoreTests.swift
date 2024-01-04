@@ -72,9 +72,13 @@ class CodableFeedStore {
         guard FileManager.default.fileExists(atPath: storeURL.path) else {
             return completion(nil)
         }
-        
-        try! FileManager.default.removeItem(at: storeURL)
-        completion(nil)
+
+        do {
+            try FileManager.default.removeItem(at: storeURL)
+            completion(nil)
+        } catch {
+            completion(error)
+        }
     }
 }
 
@@ -161,7 +165,6 @@ final class CodableFeedStoreTests: XCTestCase {
         let latestInsertionError = insert((latestFeed, latestTimestamp), to: sut)
 
         XCTAssertNil(latestInsertionError, "Expected to override cache successfully")
-
         expect(sut, toRetrieve: .found(feed: latestFeed, timestamp: latestTimestamp))
     }
 
@@ -174,7 +177,6 @@ final class CodableFeedStoreTests: XCTestCase {
         let insertionError = insert((feed, timestamp), to: sut)
 
         XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
-
         expect(sut, toRetrieve: .empty)
     }
 
@@ -194,6 +196,16 @@ final class CodableFeedStoreTests: XCTestCase {
         let deletionError = deleteCache(from: sut)
 
         XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+        expect(sut, toRetrieve: .empty)
+    }
+
+    func test_delete_deliversErrorOnDeletionError() {
+        let noDeletePermissionsURL = cachesDirectory()
+        let sut = makeSUT(storeURL: noDeletePermissionsURL)
+
+        let deletionError = deleteCache(from: sut)
+
+        XCTAssertNotNil(deletionError, "Expected cache deletion to fail with an error")
         expect(sut, toRetrieve: .empty)
     }
 
@@ -294,12 +306,16 @@ final class CodableFeedStoreTests: XCTestCase {
     }
 
     private func testSpecificStoreURL() -> URL {
-        FileManager.default.urls(
-            for: .cachesDirectory,
-            in: .userDomainMask
-        ).first!.appending(
+        cachesDirectory().appending(
             path: "\(type(of: self)).store",
             directoryHint: .isDirectory
         )
+    }
+
+    private func cachesDirectory() -> URL {
+        FileManager.default.urls(
+            for: .cachesDirectory,
+            in: .userDomainMask
+        ).first!
     }
 }
