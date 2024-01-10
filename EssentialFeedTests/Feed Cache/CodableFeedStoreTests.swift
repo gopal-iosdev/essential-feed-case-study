@@ -56,7 +56,7 @@ final class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
             encoding: .utf8
         )
 
-        expect(sut, toRetrieve: .failure(NSError.anyError))
+        assertThatRetrieveDeliversFailureOnRetrievalError(on: sut)
     }
 
     func test_retrieve_hasNoSideEffectsOnFailure() {
@@ -69,7 +69,7 @@ final class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
             encoding: .utf8
         )
 
-        expect(sut, toRetrieveTwice: .failure(NSError.anyError))
+        assertThatRetrieveHasNoSideEffectsOnFailure(on: sut)
     }
 
     func test_insert_deliversNoErrorOnEmptyCache() {
