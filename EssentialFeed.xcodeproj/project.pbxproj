@@ -235,10 +235,18 @@
 				4BB5A60C2B17D8C30083BD19 /* LocalFeedImage.swift */,
 				4B19D3FB2B3F520100A51CDC /* FeedCachePolicy.swift */,
 				4B55400D2B4666A80025980C /* CodableFeedStore.swift */,
+				4BB5CFDF2B563782003804EB /* Infrastructure */,
+			);
+			path = "Feed Cache";
+			sourceTree = "<group>";
+		};
+		4BB5CFDF2B563782003804EB /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
 				4BF023602B5628F3000EEBC2 /* CoreDataFeedStore.swift */,
 				4BF023622B56299B000EEBC2 /* FeedStore.xcdatamodeld */,
 			);
-			path = "Feed Cache";
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		4BB627DE2B4E4BFB00239A3A /* FeedStoreSpecs */ = {
