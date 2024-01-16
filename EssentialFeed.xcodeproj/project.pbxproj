@@ -30,6 +30,8 @@
 		4BB5A60B2B17D87E0083BD19 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5A60A2B17D87E0083BD19 /* RemoteFeedItem.swift */; };
 		4BB5A60D2B17D8C30083BD19 /* LocalFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5A60C2B17D8C30083BD19 /* LocalFeedImage.swift */; };
 		4BB5CFE12B5637F7003804EB /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5CFE02B5637F7003804EB /* CoreDataHelpers.swift */; };
+		4BB5CFE32B563863003804EB /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5CFE22B563863003804EB /* ManagedCache.swift */; };
+		4BB5CFE52B563892003804EB /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5CFE42B563892003804EB /* ManagedFeedImage.swift */; };
 		4BB627D52B4D9A7300239A3A /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB627D42B4D9A7300239A3A /* FeedStoreSpecs.swift */; };
 		4BB627D72B4D9B1B00239A3A /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB627D62B4D9B1B00239A3A /* XCTestCase+FeedStoreSpecs.swift */; };
 		4BB627D92B4D9F6700239A3A /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB627D82B4D9F6700239A3A /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */; };
@@ -88,6 +90,8 @@
 		4BB5A60A2B17D87E0083BD19 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
 		4BB5A60C2B17D8C30083BD19 /* LocalFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImage.swift; sourceTree = "<group>"; };
 		4BB5CFE02B5637F7003804EB /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		4BB5CFE22B563863003804EB /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
+		4BB5CFE42B563892003804EB /* ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFeedImage.swift; sourceTree = "<group>"; };
 		4BB627D42B4D9A7300239A3A /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		4BB627D62B4D9B1B00239A3A /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		4BB627D82B4D9F6700239A3A /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableRetrieveFeedStoreSpecs.swift"; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				4B55400D2B4666A80025980C /* CodableFeedStore.swift */,
 				4BF023602B5628F3000EEBC2 /* CoreDataFeedStore.swift */,
 				4BB5CFE02B5637F7003804EB /* CoreDataHelpers.swift */,
+				4BB5CFE22B563863003804EB /* ManagedCache.swift */,
+				4BB5CFE42B563892003804EB /* ManagedFeedImage.swift */,
 				4BF023622B56299B000EEBC2 /* FeedStore.xcdatamodeld */,
 			);
 			path = Infrastructure;
@@ -428,11 +434,13 @@
 				4BB5CFE12B5637F7003804EB /* CoreDataHelpers.swift in Sources */,
 				4B4C8FFE29EB26AB005E4F68 /* FeedLoader.swift in Sources */,
 				4BF023612B5628F3000EEBC2 /* CoreDataFeedStore.swift in Sources */,
+				4BB5CFE32B563863003804EB /* ManagedCache.swift in Sources */,
 				4BCC549B2A336853004924E9 /* FeedItemsMapper.swift in Sources */,
 				4BB5A60B2B17D87E0083BD19 /* RemoteFeedItem.swift in Sources */,
 				4B55400E2B4666A80025980C /* CodableFeedStore.swift in Sources */,
 				4B19D3FC2B3F520100A51CDC /* FeedCachePolicy.swift in Sources */,
 				4B4C8FFC29EB1B7F005E4F68 /* FeedImage.swift in Sources */,
+				4BB5CFE52B563892003804EB /* ManagedFeedImage.swift in Sources */,
 				4B767FF02B0AF7F10069409A /* LocalFeedLoader.swift in Sources */,
 				4B4C8FE629EB1B27005E4F68 /* EssentialFeed.docc in Sources */,
 			);
