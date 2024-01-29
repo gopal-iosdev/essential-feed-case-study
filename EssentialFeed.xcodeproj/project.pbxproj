@@ -167,6 +167,26 @@
 			path = EssentialFeedCacheIntegrationTests;
 			sourceTree = "<group>";
 		};
+		4B35A5942B67FB5900ECDB62 /* CodableFeedStore */ = {
+			isa = PBXGroup;
+			children = (
+				4B55400D2B4666A80025980C /* CodableFeedStore.swift */,
+			);
+			path = CodableFeedStore;
+			sourceTree = "<group>";
+		};
+		4B35A5952B67FB6D00ECDB62 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4BF023602B5628F3000EEBC2 /* CoreDataFeedStore.swift */,
+				4BB5CFE02B5637F7003804EB /* CoreDataHelpers.swift */,
+				4BB5CFE22B563863003804EB /* ManagedCache.swift */,
+				4BB5CFE42B563892003804EB /* ManagedFeedImage.swift */,
+				4BF023622B56299B000EEBC2 /* FeedStore.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		4B46A3BD2B266D850071CA46 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,12 +302,8 @@
 		4BB5CFDF2B563782003804EB /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				4B55400D2B4666A80025980C /* CodableFeedStore.swift */,
-				4BF023602B5628F3000EEBC2 /* CoreDataFeedStore.swift */,
-				4BB5CFE02B5637F7003804EB /* CoreDataHelpers.swift */,
-				4BB5CFE22B563863003804EB /* ManagedCache.swift */,
-				4BB5CFE42B563892003804EB /* ManagedFeedImage.swift */,
-				4BF023622B56299B000EEBC2 /* FeedStore.xcdatamodeld */,
+				4B35A5942B67FB5900ECDB62 /* CodableFeedStore */,
+				4B35A5952B67FB6D00ECDB62 /* CoreData */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
