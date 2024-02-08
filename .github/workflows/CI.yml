@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        xcode-version: '14.3.1'
+        xcode-version: '15.2'
 
     - name: Select xcode
       run: sudo xcode-select -switch /Applications/Xcode.app
