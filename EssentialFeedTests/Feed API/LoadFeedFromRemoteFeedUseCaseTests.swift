@@ -108,20 +108,20 @@ final class LoadFeedFromRemoteFeedUseCaseTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteFeedLoader(url: url, client: client)
 
-        trackMemoryLeaks(sut, file: file, line: line)
-        trackMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(client, file: file, line: line)
 
         return (sut, client)
     }
 
-    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
-        let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
+    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedImage, json: [String: Any]) {
+        let item = FeedImage(id: id, description: description, location: location, url: imageURL)
 
         let json = [
             "id": item.id.uuidString,
             "description": item.description,
             "location": item.location,
-            "image": item.imageURL.absoluteString
+            "image": item.url.absoluteString
         ].compactMapValues { $0 }
 
         return (item, json)
@@ -158,12 +158,12 @@ final class LoadFeedFromRemoteFeedUseCaseTests: XCTestCase {
     }
 
     class HTTPClientSpy: HTTPClient {
-        var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
+        var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
         var requestedURLs: [URL] {
             messages.map({ $0.url })
         }
 
-        func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
             messages.append((url, completion))
         }
 
@@ -179,7 +179,7 @@ final class LoadFeedFromRemoteFeedUseCaseTests: XCTestCase {
                 headerFields: nil
             )!
 
-            messages[index].completion(.success(data, urlResponse))
+            messages[index].completion(.success((data, urlResponse)))
         }
     }
 }

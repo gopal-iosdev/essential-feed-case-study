@@ -89,7 +89,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
 
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> HTTPClient {
         let sut = URLSessionHTTPClient()
-        trackMemoryLeaks(sut)
+        trackForMemoryLeaks(sut)
         return sut
     }
 
@@ -97,7 +97,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
         let result = resultFor(data: data, response: response, error: error)
 
         switch result {
-        case let .success(data, response):
+        case let .success((data, response)):
             return (data, response)
         default:
             XCTFail("Expected success, got \(result) instead.", file: file, line: line)
@@ -117,13 +117,13 @@ final class URLSessionHTTPClientTests: XCTestCase {
         }
     }
 
-    private func resultFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> HTTPClientResult {
+    private func resultFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> HTTPClient.Result {
         URLProtocolStub.stub(data: data, response: response, error: error)
 
         let sut = makeSUT(file: file, line: line)
         let exp = expectation(description: "Wait for completion")
 
-        var receivedResult: HTTPClientResult!
+        var receivedResult: HTTPClient.Result!
         sut.get(from: URL.anyURL) { result in
             receivedResult = result
 
@@ -202,10 +202,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 }
 
-private extension URL {
-    static let anyURL = URL(string: "https://any-url.com")!
-}
-
 private extension URLResponse {
     static let nonHTTPURLResponse = URLResponse(url: URL.anyURL, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
 }
@@ -217,8 +213,4 @@ private extension HTTPURLResponse {
 
 private extension Data {
     static let anyData = Data("any data".utf8)
-}
-
-private extension NSError {
-    static let anyError = NSError(domain: "any error", code: 0)
 }
