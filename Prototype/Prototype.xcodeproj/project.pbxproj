@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B00F1382B79274C007FC57A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B00F1372B79274C007FC57A /* FeedViewController.swift */; };
 		4BED8A8C2B77EA25004E50BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BED8A8B2B77EA25004E50BB /* AppDelegate.swift */; };
 		4BED8A8E2B77EA25004E50BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BED8A8D2B77EA25004E50BB /* SceneDelegate.swift */; };
 		4BED8A932B77EA25004E50BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BED8A912B77EA25004E50BB /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B00F1372B79274C007FC57A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		4BED8A882B77EA25004E50BB /* Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BED8A8B2B77EA25004E50BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BED8A8D2B77EA25004E50BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				4BED8A8B2B77EA25004E50BB /* AppDelegate.swift */,
 				4BED8A8D2B77EA25004E50BB /* SceneDelegate.swift */,
+				4B00F1372B79274C007FC57A /* FeedViewController.swift */,
 				4BED8A912B77EA25004E50BB /* Main.storyboard */,
 				4BED8A972B77EA26004E50BB /* Assets.xcassets */,
 				4BED8A992B77EA26004E50BB /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				4BED8A962B77EA25004E50BB /* Prototype.xcdatamodeld in Sources */,
 				4BED8A8C2B77EA25004E50BB /* AppDelegate.swift in Sources */,
+				4B00F1382B79274C007FC57A /* FeedViewController.swift in Sources */,
 				4BED8A8E2B77EA25004E50BB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
