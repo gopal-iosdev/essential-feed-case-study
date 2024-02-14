@@ -66,6 +66,20 @@
 			remoteGlobalIDString = 4B4C8FE029EB1B27005E4F68;
 			remoteInfo = EssentialFeed;
 		};
+		4B980A0D2B7D013200BD8C54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B980A082B7D013100BD8C54 /* EssentialFeediOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B9809EE2B7D013100BD8C54;
+			remoteInfo = EssentialFeediOS;
+		};
+		4B980A0F2B7D013200BD8C54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B980A082B7D013100BD8C54 /* EssentialFeediOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B9809F82B7D013100BD8C54;
+			remoteInfo = EssentialFeediOSTests;
+		};
 		4BF095F82A92FF020008F52E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4B4C8FD829EB1B27005E4F68 /* Project object */;
@@ -98,6 +112,7 @@
 		4B767FEF2B0AF7F10069409A /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		4B767FF12B0AF8830069409A /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		4B98098D2B7CFCB300BD8C54 /* EssentialFeedCacheIntegrationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedCacheIntegrationTests.xctestplan; sourceTree = "<group>"; };
+		4B980A082B7D013100BD8C54 /* EssentialFeediOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EssentialFeediOS.xcodeproj; path = EssentialFeediOS/EssentialFeediOS.xcodeproj; sourceTree = "<group>"; };
 		4B9E02FD2B7BC08C00BBB85F /* EssentialFeedAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		4BB5A60A2B17D87E0083BD19 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
 		4BB5A60C2B17D8C30083BD19 /* LocalFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImage.swift; sourceTree = "<group>"; };
@@ -189,6 +204,7 @@
 		4B4C8FD729EB1B27005E4F68 = {
 			isa = PBXGroup;
 			children = (
+				4B980A082B7D013100BD8C54 /* EssentialFeediOS.xcodeproj */,
 				4B4C8FE329EB1B27005E4F68 /* EssentialFeed */,
 				4B4C8FEF29EB1B28005E4F68 /* EssentialFeedTests */,
 				4BF095F42A92FF020008F52E /* EssentialFeedAPIEndToEndTests */,
@@ -285,6 +301,15 @@
 				4BB5CFDF2B563782003804EB /* Infrastructure */,
 			);
 			path = "Feed Cache";
+			sourceTree = "<group>";
+		};
+		4B980A092B7D013100BD8C54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B980A0E2B7D013200BD8C54 /* EssentialFeediOS.framework */,
+				4B980A102B7D013200BD8C54 /* EssentialFeediOSTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4BB5CFDF2B563782003804EB /* Infrastructure */ = {
@@ -446,6 +471,12 @@
 			mainGroup = 4B4C8FD729EB1B27005E4F68;
 			productRefGroup = 4B4C8FE229EB1B27005E4F68 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4B980A092B7D013100BD8C54 /* Products */;
+					ProjectRef = 4B980A082B7D013100BD8C54 /* EssentialFeediOS.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4B4C8FE029EB1B27005E4F68 /* EssentialFeed */,
@@ -455,6 +486,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4B980A0E2B7D013200BD8C54 /* EssentialFeediOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EssentialFeediOS.framework;
+			remoteRef = 4B980A0D2B7D013200BD8C54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4B980A102B7D013200BD8C54 /* EssentialFeediOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EssentialFeediOSTests.xctest;
+			remoteRef = 4B980A0F2B7D013200BD8C54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4B35A5842B66B63500ECDB62 /* Resources */ = {
