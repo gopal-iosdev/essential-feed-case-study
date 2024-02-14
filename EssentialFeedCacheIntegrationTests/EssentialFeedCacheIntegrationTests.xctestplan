@@ -1,10 +1,10 @@
 {
   "configurations" : [
     {
-      "id" : "61696115-B024-4D9D-8A1F-62CF6FA95905",
+      "id" : "858A4DE8-AF7F-4856-862E-10A57B4F8652",
       "name" : "Test Scheme Action",
       "options" : {
-        "targetForVariableExpansion" : null
+        "testExecutionOrdering" : "random"
       }
     }
   ],
@@ -18,11 +18,10 @@
         }
       ]
     },
-    "testExecutionOrdering" : "random"
+    "testTimeoutsEnabled" : true
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:EssentialFeed.xcodeproj",
         "identifier" : "4B35A5852B66B63500ECDB62",
