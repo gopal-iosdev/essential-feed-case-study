@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B0BBBE12B863B5D0044EDD7 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BBBE02B863B5D0044EDD7 /* FeedViewControllerTests.swift */; };
+		4B0BBBE32B863DE50044EDD7 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4C8FE129EB1B27005E4F68 /* EssentialFeed.framework */; platformFilter = ios; };
 		4B19D34E2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D34D2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift */; };
 		4B19D3502B3CB25800A51CDC /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D34F2B3CB25800A51CDC /* FeedCacheTestHelpers.swift */; };
 		4B19D3522B3CB7D000A51CDC /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D3512B3CB7D000A51CDC /* SharedTestHelpers.swift */; };
@@ -164,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0BBBE32B863DE50044EDD7 /* EssentialFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +188,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B0BBBE22B863DE50044EDD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4B35A5872B66B63500ECDB62 /* EssentialFeedCacheIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +235,7 @@
 				4B6E12722B84F4AC003AE4FE /* EssentialFeediOS */,
 				4B6E127C2B84F4AD003AE4FE /* EssentialFeediOSTests */,
 				4B4C8FE229EB1B27005E4F68 /* Products */,
+				4B0BBBE22B863DE50044EDD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
