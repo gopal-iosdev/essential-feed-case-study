@@ -101,22 +101,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D5F981A8-F860-47C2-974E-FA383D2082BE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EssentialFeediOSTests/FeedViewControllerTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "test_viewDidLoad_showsLoadingIndicator()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "36D60244-A65D-48BB-B0F7-3BDDF20F6423"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -124,10 +108,10 @@
             filePath = "EssentialFeediOSTests/FeedViewControllerTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "isRefreshing"
-            landmarkType = "24">
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "beginRefreshing()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -140,9 +124,9 @@
             filePath = "EssentialFeediOSTests/FeedViewControllerTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "beginRefreshing()"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "endRefreshing()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
