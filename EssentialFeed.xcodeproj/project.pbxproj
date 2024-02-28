@@ -11,6 +11,7 @@
 		4B0BBBE32B863DE50044EDD7 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4C8FE129EB1B27005E4F68 /* EssentialFeed.framework */; platformFilter = ios; };
 		4B0BBBE42B863F1A0044EDD7 /* XCTTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6A44892A851DF400A2E1BD /* XCTTestCase+MemoryLeakTracking.swift */; };
 		4B0E10162B8E1F2C00D1B472 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10152B8E1F2C00D1B472 /* FeedImageCell.swift */; };
+		4B0E10182B8F600400D1B472 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10172B8F600400D1B472 /* UIView+Shimmering.swift */; };
 		4B19D34E2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D34D2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift */; };
 		4B19D3502B3CB25800A51CDC /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D34F2B3CB25800A51CDC /* FeedCacheTestHelpers.swift */; };
 		4B19D3522B3CB7D000A51CDC /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B19D3512B3CB7D000A51CDC /* SharedTestHelpers.swift */; };
@@ -92,6 +93,7 @@
 /* Begin PBXFileReference section */
 		4B0BBBE02B863B5D0044EDD7 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		4B0E10152B8E1F2C00D1B472 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
+		4B0E10172B8F600400D1B472 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		4B19D34D2B3CADFE00A51CDC /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		4B19D34F2B3CB25800A51CDC /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		4B19D3512B3CB7D000A51CDC /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				4B50415B2B878E8E0014C721 /* FeedViewController.swift */,
 				4B0E10152B8E1F2C00D1B472 /* FeedImageCell.swift */,
+				4B0E10172B8F600400D1B472 /* UIView+Shimmering.swift */,
 			);
 			path = EssentialFeediOS;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0E10182B8F600400D1B472 /* UIView+Shimmering.swift in Sources */,
 				4B50415C2B878E8F0014C721 /* FeedViewController.swift in Sources */,
 				4B0E10162B8E1F2C00D1B472 /* FeedImageCell.swift in Sources */,
 			);
