@@ -8,7 +8,7 @@
 import UIKit
 import EssentialFeed
 
-final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
     private var onViewIsAppearing: ((FeedViewController) -> Void)?
     private var feedLoader: FeedLoader?
