@@ -30,10 +30,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
         tableView.prefetchDataSource = self
 
-        load()
-
         onViewIsAppearing = { vc in
-            vc.refresh()
+            vc.load()
 
             vc.onViewIsAppearing = nil
         }
