@@ -242,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				4B0E103B2B9215B700D1B472 /* Composers */,
-				4B0E103C2B97597F00D1B472 /* Models */,
 				4B0E101E2B90C6EC00D1B472 /* Controllers */,
 				4B0E101D2B90C6E500D1B472 /* Views */,
 			);
@@ -314,15 +313,6 @@
 				4B0E10392B9215AF00D1B472 /* FeedUIComposer.swift */,
 			);
 			path = Composers;
-			sourceTree = "<group>";
-		};
-		4B0E103C2B97597F00D1B472 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4B0E103D2B97598D00D1B472 /* FeedViewModel.swift */,
-				4B0E103F2B9761A200D1B472 /* FeedImageViewModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		4B35A5872B66B63500ECDB62 /* EssentialFeedCacheIntegrationTests */ = {
@@ -427,6 +417,15 @@
 			path = FeedAPI;
 			sourceTree = "<group>";
 		};
+		4B4D2C7A2BA1E0EB004CD3A8 /* Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4B0E103D2B97598D00D1B472 /* FeedViewModel.swift */,
+				4B0E103F2B9761A200D1B472 /* FeedImageViewModel.swift */,
+			);
+			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
 		4B57B6BD2B0277D60085940A /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0E101B2B90C6B100D1B472 /* Feed Image Loader */,
+				4B4D2C7A2BA1E0EB004CD3A8 /* Feed Presentation */,
 				4B0E101C2B90C6D900D1B472 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
@@ -968,6 +968,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1025,6 +1026,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
