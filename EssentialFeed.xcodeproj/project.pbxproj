@@ -262,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0E10152B8E1F2C00D1B472 /* FeedImageCell.swift */,
+				4B7AB2E82BB1BE4200F95E6B /* UITableView+Dequeueing.swift */,
 				4B0E10172B8F600400D1B472 /* UIView+Shimmering.swift */,
 				4B7AB2E42BAF2E3F00F95E6B /* Feed.storyboard */,
 				4B7AB2E62BAF2EDB00F95E6B /* Feed.xcassets */,
@@ -274,7 +275,6 @@
 			children = (
 				4B50415B2B878E8E0014C721 /* FeedViewController.swift */,
 				4B0E10372B9211BD00D1B472 /* FeedImageCellController.swift */,
-				4B7AB2E82BB1BE4200F95E6B /* UITableView+Dequeueing.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
