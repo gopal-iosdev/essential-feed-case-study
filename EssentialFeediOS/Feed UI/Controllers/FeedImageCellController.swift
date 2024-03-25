@@ -15,28 +15,27 @@ protocol FeedImageCellControllerDelegate {
 final class FeedImageCellController: FeedImageView {
     private let delegate: FeedImageCellControllerDelegate
     private var cell: FeedImageCell?
-
+    
     init(delegate: FeedImageCellControllerDelegate) {
         self.delegate = delegate
     }
-
+    
     func view(in tableView: UITableView) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedImageCell") as! FeedImageCell
-        self.cell = cell
+        cell = tableView.dequeueReusableCell()
         delegate.didRequestImage()
-
-        return cell
+        
+        return cell!
     }
-
+    
     func preload() {
         delegate.didRequestImage()
     }
-
+    
     func cancelLoad() {
         releaseCellForReuse()
         delegate.didCancelImageRequest()
     }
-
+    
     func display(_ viewModel: FeedImageViewModel<UIImage>) {
         cell?.locationContainer.isHidden = !viewModel.hasLocation
         cell?.locationLabel.text = viewModel.location
@@ -46,7 +45,7 @@ final class FeedImageCellController: FeedImageView {
         cell?.feedImageRetryButton.isHidden = !viewModel.shouldRetry
         cell?.onRetry = delegate.didRequestImage
     }
-
+    
     private func releaseCellForReuse() {
         cell = nil
     }
