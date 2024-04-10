@@ -29,6 +29,16 @@ public final class FeedUIComposer {
 
         return feedViewController
     }
+
+    private static func makeFeedViewControllerWith(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
+        let bundle = Bundle(for: FeedViewController.self)
+        let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
+        let feedViewController = storyboard.instantiateInitialViewController() as! FeedViewController
+        feedViewController.delegate = delegate
+        feedViewController.title = FeedPresenter.title
+
+        return feedViewController
+    }
 }
 
 private extension FeedViewController {
@@ -40,26 +50,6 @@ private extension FeedViewController {
         feedViewController.title = FeedPresenter.title
 
         return feedViewController
-    }
-}
-
-private final class WeakRefVirtualProxy<T: AnyObject> {
-    private weak var object: T?
-
-    init(_ object: T) {
-        self.object = object
-    }
-}
-
-extension WeakRefVirtualProxy: FeedLoadingView where T: FeedLoadingView {
-    func display(_ viewModel: FeedLoadingViewModel) {
-        object?.display(viewModel)
-    }
-}
-
-extension WeakRefVirtualProxy: FeedImageView where T: FeedImageView, T.Image == UIImage {
-    func display(_ model: FeedImageViewModel<UIImage>) {
-        object?.display(model)
     }
 }
 
