@@ -1,2 +1,5 @@
 /* "Title for the feed view" */
 "FEED_VIEW_TITLE" = "To Feed μoυ";
+
+/* "Error message to show when feed load from server fails" */
+"FEED_VIEW_CONNECTION_ERROR" = "Δεν ήταν δυνατή η σύνδεση στο διακομιστή";
