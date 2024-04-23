@@ -38,6 +38,7 @@
                             </constraints>
                             <connections>
                                 <outlet property="label" destination="GPj-AL-PkR" id="i1O-6R-edW"/>
+                                <outletCollection property="gestureRecognizers" destination="wjZ-8q-3wq" appends="YES" id="Oat-3g-d4e"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="smD-tD-ObA" userLabel="FooterView">
@@ -171,6 +172,11 @@ Location </string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JlI-nH-z1L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wjZ-8q-3wq">
+                    <connections>
+                        <action selector="hideMessageAnimated" destination="cr3-gO-tz2" id="Ndg-j4-Lvw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1072.5190839694656" y="-41.549295774647888"/>
         </scene>
