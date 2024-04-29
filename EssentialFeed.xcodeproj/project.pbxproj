@@ -488,7 +488,6 @@
 			children = (
 				4B6E12872B84F64A003AE4FE /* CI_iOS.xctestplan */,
 				4B6E12862B84F4E0003AE4FE /* EssentialFeediOS.xctestplan */,
-				4BAFFCFE2BBEE0D900689386 /* Feed Presentation */,
 				4B0E102F2B90D57100D1B472 /* FeedUI */,
 			);
 			path = EssentialFeediOSTests;
@@ -504,13 +503,6 @@
 				4BB5CFDF2B563782003804EB /* Infrastructure */,
 			);
 			path = "Feed Cache";
-			sourceTree = "<group>";
-		};
-		4BAFFCFE2BBEE0D900689386 /* Feed Presentation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
 		4BAFFD1B2BD7FB6F00689386 /* Helpers */ = {
