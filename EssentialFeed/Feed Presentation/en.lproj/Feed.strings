@@ -1,0 +1,5 @@
+/* "Title for the feed view" */
+"FEED_VIEW_TITLE" = "My Feed";
+
+/* "Error message displayed when we can't load the image feed from the server" */
+"FEED_VIEW_CONNECTION_ERROR" = "Couldn't connect to server";
