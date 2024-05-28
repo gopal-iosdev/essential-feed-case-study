@@ -12,7 +12,6 @@
 		4B0BBBE42B863F1A0044EDD7 /* XCTTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6A44892A851DF400A2E1BD /* XCTTestCase+MemoryLeakTracking.swift */; };
 		4B0E10162B8E1F2C00D1B472 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10152B8E1F2C00D1B472 /* FeedImageCell.swift */; };
 		4B0E10182B8F600400D1B472 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10172B8F600400D1B472 /* UIView+Shimmering.swift */; };
-		4B0E101A2B90C68600D1B472 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10192B90C68600D1B472 /* FeedImageDataLoader.swift */; };
 		4B0E10202B90D1A300D1B472 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E101F2B90D1A300D1B472 /* UIImage+TestHelpers.swift */; };
 		4B0E10232B90D20F00D1B472 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10222B90D20F00D1B472 /* UIRefreshControl+TestHelpers.swift */; };
 		4B0E10252B90D23E00D1B472 /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10242B90D23E00D1B472 /* UIButton+TestHelpers.swift */; };
@@ -53,6 +52,7 @@
 		4B7AB2E72BAF2EDB00F95E6B /* Feed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AB2E62BAF2EDB00F95E6B /* Feed.xcassets */; };
 		4B7AB2E92BB1BE4200F95E6B /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AB2E82BB1BE4200F95E6B /* UITableView+Dequeueing.swift */; };
 		4B7AB2EB2BB1BFA000F95E6B /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AB2EA2BB1BFA000F95E6B /* UIImageView+Animations.swift */; };
+		4BA72DBA2C0552DF007503DD /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0E10192B90C68600D1B472 /* FeedImageDataLoader.swift */; };
 		4BAFFCF92BBDA9F100689386 /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAFFCF82BBDA9F100689386 /* FeedUIIntegrationTests+Localization.swift */; };
 		4BAFFD002BC6CF5500689386 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAFFCFF2BC6CF5500689386 /* MainQueueDispatchDecorator.swift */; };
 		4BAFFD022BC6D06300689386 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAFFD012BC6D06300689386 /* WeakRefVirtualProxy.swift */; };
@@ -270,14 +270,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4B0E101B2B90C6B100D1B472 /* Feed Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-				4B0E10192B90C68600D1B472 /* FeedImageDataLoader.swift */,
-			);
-			path = "Feed Image Loader";
-			sourceTree = "<group>";
-		};
 		4B0E101C2B90C6D900D1B472 /* Feed UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +428,7 @@
 			children = (
 				4B4C8FFB29EB1B7F005E4F68 /* FeedImage.swift */,
 				4B4C8FFD29EB26AB005E4F68 /* FeedLoader.swift */,
+				4B0E10192B90C68600D1B472 /* FeedImageDataLoader.swift */,
 			);
 			path = FeedFeature;
 			sourceTree = "<group>";
@@ -477,7 +470,6 @@
 		4B6E12722B84F4AC003AE4FE /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
-				4B0E101B2B90C6B100D1B472 /* Feed Image Loader */,
 				4B0E101C2B90C6D900D1B472 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
@@ -841,6 +833,7 @@
 				4BAFFD2F2BDA98F200689386 /* FeedLoadingViewModel.swift in Sources */,
 				4BCC54992A3367E9004924E9 /* HTTPClient.swift in Sources */,
 				4BB5CFE12B5637F7003804EB /* CoreDataHelpers.swift in Sources */,
+				4BA72DBA2C0552DF007503DD /* FeedImageDataLoader.swift in Sources */,
 				4B4C8FFE29EB26AB005E4F68 /* FeedLoader.swift in Sources */,
 				4BF023612B5628F3000EEBC2 /* CoreDataFeedStore.swift in Sources */,
 				4BB5CFE32B563863003804EB /* ManagedCache.swift in Sources */,
@@ -884,7 +877,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B0E101A2B90C68600D1B472 /* FeedImageDataLoader.swift in Sources */,
 				4BAFFD1A2BD699E700689386 /* ErrorView.swift in Sources */,
 				4BAFFD1F2BD7FC9800689386 /* UIRefreshControl+Helpers.swift in Sources */,
 				4B0E10182B8F600400D1B472 /* UIView+Shimmering.swift in Sources */,
