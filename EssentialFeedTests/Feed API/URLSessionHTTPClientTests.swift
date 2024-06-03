@@ -207,7 +207,3 @@ private extension HTTPURLResponse {
     static let anyHTTPURLResponse = HTTPURLResponse(url: URL.anyURL, statusCode: 200, httpVersion: nil, headerFields: nil)
 
 }
-
-private extension Data {
-    static let anyData = Data("any data".utf8)
-}
