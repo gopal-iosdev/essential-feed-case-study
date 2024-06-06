@@ -14,3 +14,7 @@ extension NSError {
 extension URL {
     static let anyURL = URL(string: "https://any-url.com")!
 }
+
+extension Data {
+    static let anyData = Data("any data".utf8)
+}
