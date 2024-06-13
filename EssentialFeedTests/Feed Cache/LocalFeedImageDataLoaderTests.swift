@@ -35,7 +35,9 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
         completion: @escaping (FeedImageDataLoader.Result) -> Void
     ) -> any FeedImageDataLoaderTask {
         store.retrieve(dataForURL: url) { result in
-            completion(.failure(Error.failed))
+            completion(
+                result.mapError {_ in Error.failed }.flatMap { _ in .failure(Error.notFound) }
+            )
         }
         return Task()
     }
