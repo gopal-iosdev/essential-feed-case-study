@@ -432,9 +432,9 @@
 			children = (
 				4B4C8FE429EB1B27005E4F68 /* EssentialFeed.h */,
 				4B4C8FE529EB1B27005E4F68 /* EssentialFeed.docc */,
-				4B767FEE2B0AF7D60069409A /* Feed Cache */,
 				4B4C8FFF29EB2793005E4F68 /* FeedFeature */,
 				4B4C900429FC10E9005E4F68 /* FeedAPI */,
+				4B767FEE2B0AF7D60069409A /* Feed Cache */,
 				4BAFFD282BDA978C00689386 /* Feed Presentation */,
 			);
 			path = EssentialFeed;
@@ -470,9 +470,9 @@
 				4B4C900529FC10F9005E4F68 /* RemoteFeedLoader.swift */,
 				4BCC549A2A336853004924E9 /* FeedItemsMapper.swift */,
 				4BB5A60A2B17D87E0083BD19 /* RemoteFeedItem.swift */,
+				4BA72DC02C0E0073007503DD /* RemoteFeedImageDataLoader.swift */,
 				4BCC54982A3367E9004924E9 /* HTTPClient.swift */,
 				4BF095EA2A867EAC0008F52E /* URLSessionHTTPClient.swift */,
-				4BA72DC02C0E0073007503DD /* RemoteFeedImageDataLoader.swift */,
 			);
 			path = FeedAPI;
 			sourceTree = "<group>";
@@ -523,13 +523,13 @@
 		4B767FEE2B0AF7D60069409A /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				4BB5CFDF2B563782003804EB /* Infrastructure */,
 				4B767FEF2B0AF7F10069409A /* LocalFeedLoader.swift */,
 				4B767FF12B0AF8830069409A /* FeedStore.swift */,
 				4BB5A60C2B17D8C30083BD19 /* LocalFeedImage.swift */,
 				4B19D3FB2B3F520100A51CDC /* FeedCachePolicy.swift */,
 				4BA72DC92C1C7B5C007503DD /* LocalFeedImageDataLoader.swift */,
 				4BA72DCB2C1C7B92007503DD /* FeedImageDataStore.swift */,
-				4BB5CFDF2B563782003804EB /* Infrastructure */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
