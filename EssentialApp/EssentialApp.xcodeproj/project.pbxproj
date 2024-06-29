@@ -49,6 +49,7 @@
 		4BE908762C306284001BA094 /* EssentialAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE9087A2C306284001BA094 /* EssentialAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUITests.swift; sourceTree = "<group>"; };
 		4BE9087C2C306284001BA094 /* EssentialAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4BE908892C3062ED001BA094 /* EssentialApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialApp.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 		4BE9086F2C306284001BA094 /* EssentialAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				4BE908892C3062ED001BA094 /* EssentialApp.xctestplan */,
 				4BE908702C306284001BA094 /* EssentialAppTests.swift */,
 			);
 			path = EssentialAppTests;
