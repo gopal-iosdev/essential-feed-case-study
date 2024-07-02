@@ -19,7 +19,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     }
 
     func test_loadImageData_loadsFromPrimaryLoaderFirst() {
-        let url = anyURL()
+        let url = URL.anyURL
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
         _ = sut.loadImageData(from: url) { _ in }
@@ -29,7 +29,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     }
 
     func test_loadImageData_loadsFromFallbackLoaderOnPrimaryLoaderFailure() {
-        let url = anyURL()
+        let url = URL.anyURL
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
         _ = sut.loadImageData(from: url) { _ in }
@@ -41,7 +41,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     }
 
     func test_cancelLoadImageData_cancelsPrimaryLoaderTask() {
-        let url = anyURL()
+        let url = URL.anyURL
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
         let task = sut.loadImageData(from: url) { _ in }
@@ -52,7 +52,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     }
 
     func test_cancelLoadImageData_cancelsSecondaryLoaderTaskOnPrimaryLoaderFailure() {
-        let url = anyURL()
+        let url = URL.anyURL
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
         let task = sut.loadImageData(from: url) { _ in }
@@ -118,7 +118,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         line: UInt = #line
     ) {
         let exp = expectation(description: "Wait for load image data completion")
-        _ = sut.loadImageData(from: anyURL()) { receivedResult in
+        _ = sut.loadImageData(from: URL.anyURL) { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.success(receivedFeed), .success(expectedFeed)):
                 XCTAssertEqual(receivedFeed, expectedFeed)
@@ -136,10 +136,6 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         action()
 
         wait(for: [exp], timeout: 1.0)
-    }
-
-    private func anyURL() -> URL {
-        return URL(string: "http://a-url.com")!
     }
 
     private class LoaderSpy: FeedImageDataLoader {
@@ -175,8 +171,4 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         }
     }
 
-}
-
-extension Data {
-    static let anyData = Data("any data".utf8)
 }
