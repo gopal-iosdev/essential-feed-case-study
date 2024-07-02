@@ -94,6 +94,4 @@ final class FeedLoaderWithFallbackCompositeTests: XCTestCase {
 
 }
 
-extension NSError {
-    static let anyError = NSError(domain: "any error", code: 0)
-}
+
