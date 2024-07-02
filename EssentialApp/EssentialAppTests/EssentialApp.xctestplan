@@ -12,7 +12,7 @@
     "codeCoverage" : {
       "targets" : [
         {
-          "containerPath" : "container:EssentialApp.xcodeproj",
+          "containerPath" : "container:EssentialApp\/EssentialApp.xcodeproj",
           "identifier" : "4BE908552C306283001BA094",
           "name" : "EssentialApp"
         }
@@ -22,18 +22,15 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:EssentialApp.xcodeproj",
+        "containerPath" : "container:EssentialApp\/EssentialApp.xcodeproj",
         "identifier" : "4BE9086B2C306284001BA094",
         "name" : "EssentialAppTests"
       }
     },
     {
-      "enabled" : false,
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:EssentialApp.xcodeproj",
+        "containerPath" : "container:EssentialApp\/EssentialApp.xcodeproj",
         "identifier" : "4BE908752C306284001BA094",
         "name" : "EssentialAppUITests"
       }
