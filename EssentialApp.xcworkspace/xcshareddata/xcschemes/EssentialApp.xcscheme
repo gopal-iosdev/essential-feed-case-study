@@ -18,7 +18,7 @@
                BlueprintIdentifier = "4BE908552C306283001BA094"
                BuildableName = "EssentialApp.app"
                BlueprintName = "EssentialApp"
-               ReferencedContainer = "container:EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,7 +43,7 @@
                BlueprintIdentifier = "4BE9086B2C306284001BA094"
                BuildableName = "EssentialAppTests.xctest"
                BlueprintName = "EssentialAppTests"
-               ReferencedContainer = "container:EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -54,7 +54,7 @@
                BlueprintIdentifier = "4BE908752C306284001BA094"
                BuildableName = "EssentialAppUITests.xctest"
                BlueprintName = "EssentialAppUITests"
-               ReferencedContainer = "container:EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -76,9 +76,16 @@
             BlueprintIdentifier = "4BE908552C306283001BA094"
             BuildableName = "EssentialApp.app"
             BlueprintName = "EssentialApp"
-            ReferencedContainer = "container:EssentialApp.xcodeproj">
+            ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "IDEPreferLogStreaming"
+            value = "YES"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -93,7 +100,7 @@
             BlueprintIdentifier = "4BE908552C306283001BA094"
             BuildableName = "EssentialApp.app"
             BlueprintName = "EssentialApp"
-            ReferencedContainer = "container:EssentialApp.xcodeproj">
+            ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
