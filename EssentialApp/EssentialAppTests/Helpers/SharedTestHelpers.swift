@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EssentialFeed
 
 extension URL {
     static let anyURL = URL(string: "http://a-url.com")!
@@ -17,4 +18,8 @@ extension NSError {
 
 extension Data {
     static let anyData = Data("any data".utf8)
+}
+
+func uniqueFeed() -> [FeedImage] {
+    [FeedImage(id: UUID(), description: "any", location: "any", url: URL(string: "http:\\any-url.com")!)]
 }
