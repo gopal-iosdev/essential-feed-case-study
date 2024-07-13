@@ -23,7 +23,7 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:EssentialApp.xcodeproj",
+        "containerPath" : "container:EssentialApp\/EssentialApp.xcodeproj",
         "identifier" : "4B465FC02C42C18200AD94A0",
         "name" : "EssentialAppUIAcceptanceTests"
       }
