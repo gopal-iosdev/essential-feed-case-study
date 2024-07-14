@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "4F5982FE-4934-4654-A2CA-F07D2751C74D",
+      "id" : "E4644ACB-CA68-456F-A20A-A69AF47840C0",
       "name" : "Test Scheme Action",
       "options" : {
 
@@ -12,7 +12,7 @@
     "codeCoverage" : {
       "targets" : [
         {
-          "containerPath" : "container:EssentialApp\/EssentialApp.xcodeproj",
+          "containerPath" : "container:EssentialApp.xcodeproj",
           "identifier" : "4BE908552C306283001BA094",
           "name" : "EssentialApp"
         }
@@ -24,8 +24,8 @@
     {
       "target" : {
         "containerPath" : "container:EssentialApp\/EssentialApp.xcodeproj",
-        "identifier" : "4BE9086B2C306284001BA094",
-        "name" : "EssentialAppTests"
+        "identifier" : "4B465FC02C42C18200AD94A0",
+        "name" : "EssentialAppUIAcceptanceTests"
       }
     }
   ],
