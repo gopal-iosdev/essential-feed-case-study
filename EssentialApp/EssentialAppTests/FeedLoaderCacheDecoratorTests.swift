@@ -54,8 +54,8 @@ final class FeedLoaderCacheDecoratorTests: XCTestCase, FeedLoaderTestCase {
         let loader = FeedLoaderStub(result: loaderResult)
         let sut = FeedLoaderCacheDecorator(decoratee: loader, cache: cache)
 
-        trackMemoryLeaks(loader)
-        trackMemoryLeaks(sut)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
 
         return sut
     }

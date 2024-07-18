@@ -44,9 +44,9 @@ final class FeedLoaderWithFallbackCompositeTests: XCTestCase, FeedLoaderTestCase
         let fallbackLoader = FeedLoaderStub(result: fallbackResult)
         let sut = FeedLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
 
-        trackMemoryLeaks(primaryLoader)
-        trackMemoryLeaks(fallbackLoader)
-        trackMemoryLeaks(sut)
+        trackForMemoryLeaks(primaryLoader, file: file, line: line)
+        trackForMemoryLeaks(fallbackLoader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
 
         return sut
     }
