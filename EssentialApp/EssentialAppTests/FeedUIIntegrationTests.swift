@@ -95,6 +95,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         sut.simulateUserInitiatedFeedReload()
         loader.completeFeedLoadingWithError(at: 1)
         assertThat(sut, isRendering: [image0])
+        RunLoop.current.run(until: Date()+1)
     }
 
     func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
