@@ -88,6 +88,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
 
         sut.simulateAppearance()
+        sut.tableView.frame = CGRect(x: 0, y: 0, width: 390, height: 400)
         loader.completeFeedLoading(with: [image0], at: 0)
         assertThat(sut, isRendering: [image0])
 
