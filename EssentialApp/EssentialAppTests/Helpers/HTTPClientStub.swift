@@ -7,6 +7,7 @@
 
 import Foundation
 import EssentialFeed
+import EssentialFeedAPI
 
 class HTTPClientStub: HTTPClient {
     private class Task: HTTPClientTask {
@@ -19,7 +20,7 @@ class HTTPClientStub: HTTPClient {
         self.stub = stub
     }
 
-    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> any EssentialFeed.HTTPClientTask {
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> any EssentialFeedAPI.HTTPClientTask {
         completion(stub(url))
         return Task()
     }
