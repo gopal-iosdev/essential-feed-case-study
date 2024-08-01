@@ -1,6 +1,9 @@
 # Essential Feed App – Image Feed Feature
 
-[![Essential Feed CI](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI.yml/badge.svg)](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI.yml)
+[![Essential Feed CI iOS](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI-iOS.yml/badge.svg)](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI-iOS.yml)
+
+[![Essential Feed CI macOS](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI-macOS.yml/badge.svg)](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI-macOS.yml)
+
 
 ## BDD Specs
 
