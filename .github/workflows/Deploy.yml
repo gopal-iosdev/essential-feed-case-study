@@ -1,28 +1,23 @@
 name: Deploy
 
-# Controls when the action will run. Triggers the workflow on push events
-# but only for the master branch
 on:
   push:
     branches: [ main ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build-and-deploy"
   build-and-deploy:
-    # The type of runner that the job will run on
     runs-on: macos-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
     - name: Install provisioning profile
       run: |
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/profile.mobileprovision .github/deployment/profile.mobileprovision.gpg
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+        PROFILE_UUID=$(security cms -D -i .github/deployment/profile.mobileprovision | plutil -extract UUID raw -)
+        cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_UUID.mobileprovision
+
     - name: Install keychain certificate
       run: |
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/certificate.p12 .github/deployment/certificate.p12.gpg
@@ -32,6 +27,7 @@ jobs:
         security default-keychain -s ~/Library/Keychains/build.keychain
         security unlock-keychain -p "" ~/Library/Keychains/build.keychain
         security set-key-partition-list -S apple-tool:,apple: -s -k "" ~/Library/Keychains/build.keychain
+
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_15.3.app
 
@@ -44,7 +40,7 @@ jobs:
         /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "EssentialApp/EssentialApp/Info.plist"
 
     - name: Build
-      run: xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive"
+      run: xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" PROVISIONING_PROFILE_SPECIFIER="Essential App Production"
 
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa
