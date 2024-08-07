@@ -27,11 +27,21 @@ jobs:
         # Create the directory for provisioning profiles if it does not exist
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
         
+        # List files before copying
+        echo "Files before copying:"
+        ls -la .github/deployment/
+        echo "Target directory contents before copying:"
+        ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
+        
         # Copy the provisioning profile to the appropriate directory
         cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
+        # List files after copying
+        echo "Files after copying:"
+        ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
+        
         # Verify if the profile was copied successfully
-        if [ -f "~/Library/MobileDevice/Provisioning Profiles/profile.mobileprovision" ]; then
+        if [ -f ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision ]; then
           echo "Provisioning profile copied successfully."
         else
           echo "Failed to copy the provisioning profile."
