@@ -29,12 +29,13 @@ jobs:
         
         # Copy the provisioning profile to the appropriate directory
         cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
-        
+
         # Verify if the profile was copied successfully
         if [ -f "~/Library/MobileDevice/Provisioning Profiles/profile.mobileprovision" ]; then
           echo "Provisioning profile copied successfully."
         else
           echo "Failed to copy the provisioning profile."
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
           exit 1
         fi
 
