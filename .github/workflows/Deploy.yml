@@ -1,28 +1,43 @@
 name: Deploy
 
-# Controls when the action will run. Triggers the workflow on push events
-# but only for the master branch
 on:
   push:
     branches: [ main ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build-and-deploy"
   build-and-deploy:
-    # The type of runner that the job will run on
     runs-on: macos-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
     - name: Install provisioning profile
       run: |
+        # Decrypt the provisioning profile
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/profile.mobileprovision .github/deployment/profile.mobileprovision.gpg
+        
+        # Check if the provisioning profile is decrypted successfully
+        if [ -f ".github/deployment/profile.mobileprovision" ]; then
+          echo "Provisioning profile decrypted successfully."
+        else
+          echo "Failed to decrypt the provisioning profile."
+          exit 1
+        fi
+        
+        # Create the directory for provisioning profiles if it does not exist
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        
+        # Copy the provisioning profile to the appropriate directory
         cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+        
+        # Verify if the profile was copied successfully
+        if [ -f "~/Library/MobileDevice/Provisioning Profiles/profile.mobileprovision" ]; then
+          echo "Provisioning profile copied successfully."
+        else
+          echo "Failed to copy the provisioning profile."
+          exit 1
+        fi
+
     - name: Install keychain certificate
       run: |
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/certificate.p12 .github/deployment/certificate.p12.gpg
@@ -32,6 +47,7 @@ jobs:
         security default-keychain -s ~/Library/Keychains/build.keychain
         security unlock-keychain -p "" ~/Library/Keychains/build.keychain
         security set-key-partition-list -S apple-tool:,apple: -s -k "" ~/Library/Keychains/build.keychain
+
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_15.3.app
 
