@@ -13,9 +13,9 @@ jobs:
 
     - name: Install provisioning profile
       run: |
-        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/Essential_App_Production.mobileprovision .github/deployment/profile.mobileprovision.gpg
+        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/Essential\ App\ Production.mobileprovision .github/deployment/profile.mobileprovision.gpg
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp .github/deployment/Essential_App_Production.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+        cp .github/deployment/Essential\ App\ Production.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
     - name: Install keychain certificate
       run: |
