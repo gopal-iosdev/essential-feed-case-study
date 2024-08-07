@@ -72,7 +72,7 @@ jobs:
         echo "Available provisioning profiles before build:"
         security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/Essential\ App\ Production.mobileprovision
         
-        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" PROVISIONING_PROFILE_SPECIFIER="Essential App Production" CODE_SIGN_IDENTITY="iPhone Distribution"
+        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" -allowProvisioningUpdates CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER="Essential App Production" CODE_SIGN_IDENTITY="iPhone Distribution"
 
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa
