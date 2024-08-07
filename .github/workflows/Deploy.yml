@@ -14,10 +14,10 @@ jobs:
     - name: Install provisioning profile
       run: |
         # Decrypt the provisioning profile
-        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/profile.mobileprovision .github/deployment/profile.mobileprovision.gpg
+        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/Essential_App_Production.mobileprovision .github/deployment/profile.mobileprovision.gpg
         
         # Check if the provisioning profile is decrypted successfully
-        if [ -f ".github/deployment/profile.mobileprovision" ]; then
+        if [ -f ".github/deployment/Essential_App_Production.mobileprovision" ]; then
           echo "Provisioning profile decrypted successfully."
         else
           echo "Failed to decrypt the provisioning profile."
@@ -28,17 +28,20 @@ jobs:
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
         
         # Copy the provisioning profile to the appropriate directory
-        cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+        cp .github/deployment/Essential_App_Production.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+        # Rename the profile to match exactly "Essential App Production"
+        mv ~/Library/MobileDevice/Provisioning\ Profiles/Essential_App_Production.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/Essential\ App\ Production.mobileprovision
 
         # List installed provisioning profiles
         echo "Installed provisioning profiles:"
         ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
 
         # Verify if the profile was copied successfully
-        if [ -f ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision ]; then
-          echo "Provisioning profile copied successfully."
+        if [ -f ~/Library/MobileDevice/Provisioning\ Profiles/Essential\ App\ Production.mobileprovision ]; then
+          echo "Provisioning profile copied and renamed successfully."
         else
-          echo "Failed to copy the provisioning profile."
+          echo "Failed to copy and rename the provisioning profile."
           ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
           exit 1
         fi
@@ -67,9 +70,9 @@ jobs:
     - name: Build
       run: |
         echo "Available provisioning profiles before build:"
-        security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
+        security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/Essential\ App\ Production.mobileprovision
         
-        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" CODE_SIGN_IDENTITY="iPhone Distribution" PROVISIONING_PROFILE_SPECIFIER="Essential App Production"
+        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" PROVISIONING_PROFILE_SPECIFIER="Essential App Production" CODE_SIGN_IDENTITY="iPhone Distribution"
 
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa
