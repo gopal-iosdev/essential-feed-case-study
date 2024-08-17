@@ -33,19 +33,21 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - name: Set build number
+   - name: Set build number
       run: |
-        set -e  # Exit immediately if a command exits with a non-zero status
+        set -e
         currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
         if [ $? -ne 0 ]; then
           echo "Error: Failed to read the current build number from Info.plist"
           exit 1
         fi
 
+        echo "Current build number in Info.plist: $currentBuildNumber"
+
         if [ $currentBuildNumber -ge 4 ]; then
           newBuildNumber=$(($currentBuildNumber + 1))
         else
-          newBuildNumber=5 # Start from 5 to avoid conflict
+          newBuildNumber=5
         fi
 
         echo "Setting build number to $newBuildNumber"
@@ -56,6 +58,15 @@ jobs:
         fi
 
         echo "Build number updated successfully to $newBuildNumber"
+
+   - name: Check build number
+      run: |
+        updatedBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
+        echo "Current build number in Info.plist: $updatedBuildNumber"
+        if [ $updatedBuildNumber -le 5 ]; then
+          echo "Error: Build number is not greater than 5. Failing the step."
+          exit 1
+        fi
 
     - name: Build
       run: |
