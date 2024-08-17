@@ -37,34 +37,20 @@ jobs:
       run: |
         set -e
         currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
-        if [ $? -ne 0 ]; then
-          echo "Error: Failed to read the current build number from Info.plist"
-          exit 1
-        fi
-
         echo "Current build number in Info.plist: $currentBuildNumber"
 
-        if [ $currentBuildNumber -ge 4 ]; then
-          newBuildNumber=$(($currentBuildNumber + 1))
-        else
-          newBuildNumber=5
-        fi
-
+        newBuildNumber=$(($currentBuildNumber + 1))
         echo "Setting build number to $newBuildNumber"
-        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
-        if [ $? -ne 0 ]; then
-          echo "Error: Failed to update the build number in Info.plist"
-          exit 1
-        fi
 
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
         echo "Build number updated successfully to $newBuildNumber"
 
     - name: Check build number
       run: |
         updatedBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
         echo "Current build number in Info.plist: $updatedBuildNumber"
-        if [ $updatedBuildNumber -le 5 ]; then
-          echo "Error: Build number is not greater than 5. Failing the step."
+        if [ $updatedBuildNumber -lt $newBuildNumber ]; then
+          echo "Error: Build number was not updated correctly. Failing the step."
           exit 1
         fi
 
