@@ -39,7 +39,10 @@ jobs:
         currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
         echo "Current build number in Info.plist: $currentBuildNumber"
 
-        newBuildNumber=$(($currentBuildNumber + 1))
+        # Extract the integer part and add .0 to maintain the format
+        integerPart=${currentBuildNumber%.*}
+        newBuildNumber=$(($integerPart + 1)).0
+
         echo "Setting build number to $newBuildNumber"
 
         /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
