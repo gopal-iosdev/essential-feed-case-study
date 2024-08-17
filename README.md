@@ -4,6 +4,8 @@
 
 [![Essential Feed CI macOS](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI-macOS.yml/badge.svg)](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/CI-macOS.yml)
 
+[![Deploy](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/Deploy.yml/badge.svg)](https://github.com/gopal-iosdev/essential-feed-case-study/actions/workflows/Deploy.yml)
+
 
 ## BDD Specs
 
