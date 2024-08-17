@@ -33,29 +33,16 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - name: Set build number
+    - name: Fetch current project version
       run: |
-        set -e
-        currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
-        echo "Current build number in Info.plist: $currentBuildNumber"
+        currentProjectVersion=$(xcodebuild -showBuildSetting -project "EssentialApp.xcodeproj" -target "EssentialApp" | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
+        echo "Current project version: $currentProjectVersion"
 
-        # Extract the integer part and add .0 to maintain the format
-        integerPart=${currentBuildNumber%.*}
-        newBuildNumber=$(($integerPart + 1)).0
-
-        echo "Setting build number to $newBuildNumber"
-
-        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
-        echo "Build number updated successfully to $newBuildNumber"
-
-    - name: Check build number
+    - name: Increment project version
       run: |
-        updatedBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
-        echo "Current build number in Info.plist: $updatedBuildNumber"
-        if [ $updatedBuildNumber -lt $newBuildNumber ]; then
-          echo "Error: Build number was not updated correctly. Failing the step."
-          exit 1
-        fi
+        agvtool next-version -all
+        updatedProjectVersion=$(xcodebuild -showBuildSetting -project "EssentialApp.xcodeproj" -target "EssentialApp" | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
+        echo "Updated project version: $updatedProjectVersion"
 
     - name: Build
       run: |
