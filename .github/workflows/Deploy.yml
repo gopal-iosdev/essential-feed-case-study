@@ -13,9 +13,9 @@ jobs:
 
     - name: Install provisioning profile
       run: |
-        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/Essential\ App\ Production.mobileprovision .github/deployment/profile.mobileprovision.gpg
+        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/EssentialAppDistribution.mobileprovision .github/deployment/profile.mobileprovision.gpg
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp .github/deployment/Essential\ App\ Production.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+        cp .github/deployment/EssentialAppDistribution.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
     - name: Install keychain certificate
       run: |
@@ -40,7 +40,7 @@ jobs:
 
     - name: Build
       run: |
-        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER="Essential App Production" CODE_SIGN_IDENTITY="iPhone Distribution" -allowProvisioningUpdates
+        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER="EssentialAppDistribution" CODE_SIGN_IDENTITY="iPhone Distribution" -allowProvisioningUpdates
 
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa
