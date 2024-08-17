@@ -35,20 +35,24 @@ jobs:
 
     - name: Fetch current project version
       run: |
-        cd essential-feed-case-study/EssentialApp
         echo "Current Directory:"
         pwd
         echo "Directory Contents:"
         ls
+        cd EssentialApp
         currentProjectVersion=$(xcrun agvtool what-version -terse)
         echo "Current project version for EssentialApp and EssentialAppTests: $currentProjectVersion"
 
     - name: Increment project version
       run: |
-        cd essential-feed-case-study/EssentialApp
-        echo "Current Directory:"
+        echo "Current Directory Before:"
         pwd
-        echo "Directory Contents:"
+        echo "Directory Contents Before:"
+        ls
+        cd EssentialApp
+        echo "Current Directory After:"
+        pwd
+        echo "Directory Contents After:"
         ls
         xcrun agvtool next-version -all
         updatedProjectVersion=$(xcrun agvtool what-version -terse)
