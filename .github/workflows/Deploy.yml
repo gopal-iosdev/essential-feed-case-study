@@ -35,8 +35,14 @@ jobs:
 
     - name: Set build number
       run: |
-        buildNumber=$(($GITHUB_RUN_NUMBER + 1))
-        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "EssentialApp/EssentialApp/Info.plist"
+        # Get the previous build number from the last successful GitHub Action run
+        lastBuildNumber=$(xcrun altool --list-apps --username "${{ secrets.APPSTORE_USERNAME }}" --password "${{ secrets.APPSTORE_PASSWORD }}" | grep -A1 "EssentialApp" | grep -o "[0-9]*")
+        if [ -z "$lastBuildNumber" ]; then
+          lastBuildNumber=1  # Default to 1 if no previous build number is found
+        fi
+        newBuildNumber=$(($lastBuildNumber + 1))
+        echo "New build number: $newBuildNumber"
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
 
     - name: Build
       run: |
