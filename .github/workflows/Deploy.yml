@@ -35,9 +35,14 @@ jobs:
 
     - name: Set build number
       run: |
-        buildNumber=$(($GITHUB_RUN_NUMBER + 1))
-        echo "Setting build number to $buildNumber"
-        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "EssentialApp/EssentialApp/Info.plist"
+        currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
+        if [ $currentBuildNumber -ge 4 ]; then
+          newBuildNumber=$(($currentBuildNumber + 1))
+        else
+          newBuildNumber=5 # Start from 5 to avoid conflict
+        fi
+        echo "Setting build number to $newBuildNumber"
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
 
     - name: Build
       run: |
