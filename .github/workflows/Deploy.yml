@@ -33,7 +33,7 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-   - name: Set build number
+    - name: Set build number
       run: |
         set -e
         currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
@@ -59,7 +59,7 @@ jobs:
 
         echo "Build number updated successfully to $newBuildNumber"
 
-   - name: Check build number
+    - name: Check build number
       run: |
         updatedBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
         echo "Current build number in Info.plist: $updatedBuildNumber"
