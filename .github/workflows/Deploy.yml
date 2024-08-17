@@ -40,7 +40,7 @@ jobs:
 
     - name: Increment project version
       run: |
-        agvtool next-version -all -target EssentialApp
+        agvtool next-version -all
         updatedProjectVersion=$(xcodebuild -showBuildSettings -project "EssentialApp/EssentialApp.xcodeproj" -target "EssentialApp" | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
         echo "Updated project version for EssentialApp: $updatedProjectVersion"
 
