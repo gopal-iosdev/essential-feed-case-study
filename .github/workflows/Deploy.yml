@@ -35,14 +35,27 @@ jobs:
 
     - name: Set build number
       run: |
+        set -e  # Exit immediately if a command exits with a non-zero status
         currentBuildNumber=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "EssentialApp/EssentialApp/Info.plist")
+        if [ $? -ne 0 ]; then
+          echo "Error: Failed to read the current build number from Info.plist"
+          exit 1
+        fi
+
         if [ $currentBuildNumber -ge 4 ]; then
           newBuildNumber=$(($currentBuildNumber + 1))
         else
           newBuildNumber=5 # Start from 5 to avoid conflict
         fi
+
         echo "Setting build number to $newBuildNumber"
         /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $newBuildNumber" "EssentialApp/EssentialApp/Info.plist"
+        if [ $? -ne 0 ]; then
+          echo "Error: Failed to update the build number in Info.plist"
+          exit 1
+        fi
+
+        echo "Build number updated successfully to $newBuildNumber"
 
     - name: Build
       run: |
