@@ -35,14 +35,24 @@ jobs:
 
     - name: Fetch current project version
       run: |
-        currentProjectVersion=$(xcodebuild -showBuildSettings -project "EssentialApp/EssentialApp.xcodeproj" -target "EssentialApp" | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
-        echo "Current project version for EssentialApp: $currentProjectVersion"
+        cd essential-feed-case-study/EssentialApp
+        echo "Current Directory:"
+        pwd
+        echo "Directory Contents:"
+        ls
+        currentProjectVersion=$(xcrun agvtool what-version -terse)
+        echo "Current project version for EssentialApp and EssentialAppTests: $currentProjectVersion"
 
     - name: Increment project version
       run: |
-        agvtool next-version -all
-        updatedProjectVersion=$(xcodebuild -showBuildSettings -project "EssentialApp/EssentialApp.xcodeproj" -target "EssentialApp" | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
-        echo "Updated project version for EssentialApp: $updatedProjectVersion"
+        cd essential-feed-case-study/EssentialApp
+        echo "Current Directory:"
+        pwd
+        echo "Directory Contents:"
+        ls
+        xcrun agvtool next-version -all
+        updatedProjectVersion=$(xcrun agvtool what-version -terse)
+        echo "Updated project version for EssentialApp and EssentialAppTests: $updatedProjectVersion"
 
     - name: Build
       run: |
