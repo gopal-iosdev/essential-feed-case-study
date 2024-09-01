@@ -38,6 +38,7 @@
 		4BFEB91D2C633D1B0008961E /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE9088B2C306523001BA094 /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4BFEB91E2C633D1B0008961E /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE9088C2C306523001BA094 /* EssentialFeediOS.framework */; };
 		4BFEB91F2C633D1B0008961E /* EssentialFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE9088C2C306523001BA094 /* EssentialFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EF4B90F72C8535420077EAB5 /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4B90F62C8535420077EAB5 /* CombineHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		4BE908892C3062ED001BA094 /* EssentialApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialApp.xctestplan; sourceTree = "<group>"; };
 		4BE9088B2C306523001BA094 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE9088C2C306523001BA094 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4B90F62C8535420077EAB5 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				4BE908592C306283001BA094 /* AppDelegate.swift */,
 				4BE9085B2C306283001BA094 /* SceneDelegate.swift */,
+				EF4B90F62C8535420077EAB5 /* CombineHelpers.swift */,
 				4B806E152C480A8800D892B4 /* FeedUIComposer.swift */,
 				4B806E132C480A8800D892B4 /* WeakRefVirtualProxy.swift */,
 				4B806E162C480A8800D892B4 /* FeedImageDataLoaderPresentationAdapter.swift */,
@@ -304,6 +307,7 @@
 			files = (
 				4B806E1D2C480A8800D892B4 /* FeedViewAdapter.swift in Sources */,
 				4B806E1C2C480A8800D892B4 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */,
+				EF4B90F72C8535420077EAB5 /* CombineHelpers.swift in Sources */,
 				4B806E1B2C480A8800D892B4 /* FeedUIComposer.swift in Sources */,
 				4BE9085E2C306283001BA094 /* ViewController.swift in Sources */,
 				4BE9085A2C306283001BA094 /* AppDelegate.swift in Sources */,
