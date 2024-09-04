@@ -37,7 +37,7 @@ final class FeedItemsMapperTests: XCTestCase {
         XCTAssertEqual(result, [])
     }
 
-    func test_load_deliversItemsOn200HTTPResponseWithJSONItems() throws {
+    func test_map_deliversItemsOn200HTTPResponseWithJSONItems() throws {
         let item1 = makeItem(id: UUID(), imageURL: URL(string: "http://a-url.com")!)
         let item2 = makeItem(id: UUID(), description: "a description", location: "a location", imageURL: URL(string: "http://url.com")!)
 
@@ -67,25 +67,5 @@ final class FeedItemsMapperTests: XCTestCase {
         ].compactMapValues { $0 }
 
         return (item, json)
-    }
-
-    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let json = ["items": items]
-        return try! JSONSerialization.data(withJSONObject: json)
-    }
-
-    private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.Result {
-        .failure(error)
-    }
-}
-
-private extension HTTPURLResponse {
-    convenience init(statusCode: Int) {
-        self.init(
-            url: URL.anyURL,
-            statusCode: statusCode,
-            httpVersion: nil,
-            headerFields: nil
-        )!
     }
 }
