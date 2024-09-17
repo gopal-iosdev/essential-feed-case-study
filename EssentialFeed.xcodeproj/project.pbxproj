@@ -390,7 +390,6 @@
 				4B6E12882B84F7E3003AE4FE /* CI_macOS.xctestplan */,
 				4BF095EE2A92FD580008F52E /* EssentialFeed.xctestplan */,
 				4B6A44882A851DCD00A2E1BD /* Helpers */,
-				EF02AA112C888FC800F66A37 /* Shared API */,
 				EF02AA122C888FD400F66A37 /* Shared API Infra */,
 				EF02AA152C8890E400F66A37 /* Image Comments API */,
 				4BCC549C2A33712F004924E9 /* Feed API */,
@@ -482,6 +481,7 @@
 		4BA72DBF2C0DFF98007503DD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4BA72DBD2C0DFF94007503DD /* HTTPClientSpy.swift */,
 				4BA72DC52C11EC9B007503DD /* URLProtocolStub.swift */,
 			);
 			path = Helpers;
@@ -602,14 +602,6 @@
 			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
-		EF02AA112C888FC800F66A37 /* Shared API */ = {
-			isa = PBXGroup;
-			children = (
-				EF02AA132C88900700F66A37 /* Helpers */,
-			);
-			path = "Shared API";
-			sourceTree = "<group>";
-		};
 		EF02AA122C888FD400F66A37 /* Shared API Infra */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,14 +609,6 @@
 				4B3086D52A76D933001298EF /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Shared API Infra";
-			sourceTree = "<group>";
-		};
-		EF02AA132C88900700F66A37 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				4BA72DBD2C0DFF94007503DD /* HTTPClientSpy.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		EF02AA142C8890B300F66A37 /* Image Comments API */ = {
