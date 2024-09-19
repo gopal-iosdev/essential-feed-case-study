@@ -2,4 +2,4 @@
 "FEED_VIEW_TITLE" = "Meu Feed";
 
 /* "Error message displayed when we can't load the image feed from the server" */
-"FEED_VIEW_CONNECTION_ERROR" = "Não foi possível conectar com o servidor";
+"GENERIC_CONNECTION_ERROR" = "Não foi possível conectar com o servidor";
