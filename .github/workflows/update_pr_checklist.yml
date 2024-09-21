@@ -1,0 +1,51 @@
+name: Update PR Checklist
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  update-checklist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if milestone is set
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Fetch the pull request details
+            const { data: pr } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: prNumber,
+            });
+
+            // Get the PR body
+            let body = pr.body || '';
+
+            // Define the checklist items
+            const uncheckedItem = '- [ ] Did you add a milestone?';
+            const checkedItem = '- [x] Did you add a milestone?';
+
+            // Check if a milestone is assigned
+            const hasMilestone = pr.milestone !== null;
+
+            // Update the PR body
+            if (hasMilestone) {
+              body = body.replace(uncheckedItem, checkedItem);
+            } else {
+              body = body.replace(checkedItem, uncheckedItem);
+            }
+
+            // Update the PR description
+            await github.rest.pulls.update({
+              owner,
+              repo,
+              pull_number: prNumber,
+              body: body,
+            });
