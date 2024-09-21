@@ -9,7 +9,7 @@ import Foundation
 
 public final class FeedItemsMapper {
     private struct Root: Decodable {
-        private let items: [RemoteFeedItem]
+        private let itemsTo: [RemoteFeedItem]
         
         private struct RemoteFeedItem: Decodable {
             let id: UUID
