@@ -4,48 +4,117 @@ on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   update-checklist:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Check if milestone is set
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          OWNER=${{ github.repository_owner }}
+          REPO=$(echo "${{ github.repository }}" | cut -d'/' -f2)
 
-            // Fetch the pull request details
-            const { data: pr } = await github.rest.pulls.get({
-              owner,
-              repo,
-              pull_number: prNumber,
-            });
+          # Fetch the PR details
+          PR_DATA=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/$OWNER/$REPO/pulls/$PR_NUMBER")
 
-            // Get the PR body
-            let body = pr.body || '';
+          # Get the PR body
+          BODY=$(echo "$PR_DATA" | jq -r '.body')
 
-            // Define the checklist items
-            const uncheckedItem = '- [ ] Did you add a milestone?';
-            const checkedItem = '- [x] Did you add a milestone?';
+          # Define the checklist items
+          UNCHECKED_ITEM='- [ ] Did you add a milestone?'
+          CHECKED_ITEM='- [x] Did you add a milestone?'
 
-            // Check if a milestone is assigned
-            const hasMilestone = pr.milestone !== null;
+          # Escape special characters for sed
+          UNCHECKED_ITEM_ESCAPED=$(printf '%s\n' "$UNCHECKED_ITEM" | sed 's/[][\/.^$*]/\\&/g')
+          CHECKED_ITEM_ESCAPED=$(printf '%s\n' "$CHECKED_ITEM" | sed 's/[][\/.^$*]/\\&/g')
 
-            // Update the PR body
-            if (hasMilestone) {
-              body = body.replace(uncheckedItem, checkedItem);
-            } else {
-              body = body.replace(checkedItem, uncheckedItem);
-            }
+          # Check if a milestone is assigned
+          MILESTONE=$(echo "$PR_DATA" | jq '.milestone')
 
-            // Update the PR description
-            await github.rest.pulls.update({
-              owner,
-              repo,
-              pull_number: prNumber,
-              body: body,
-            });
+          # Update the PR body
+          if [ "$MILESTONE" != "null" ]; then
+            UPDATED_BODY=$(echo "$BODY" | sed "s/$UNCHECKED_ITEM_ESCAPED/$CHECKED_ITEM/g")
+          else
+            UPDATED_BODY=$(echo "$BODY" | sed "s/$CHECKED_ITEM_ESCAPED/$UNCHECKED_ITEM/g")
+          fi
+
+          # Save the updated body to a temporary file
+          echo "$UPDATED_BODY" > updated_body.txt
+
+      - name: Build for all debug targets
+        id: build_project
+        continue-on-error: true  # Continue even if the build fails to update the checklist
+        run: |
+          set -eo pipefail
+
+          # Install xcpretty if not installed
+          if ! command -v xcpretty > /dev/null; then
+            sudo gem install xcpretty
+          fi
+
+          # Define your schemes or targets
+          SCHEMES=("CI_iOS")  # Replace with your actual schemes
+
+          BUILD_SUCCESS=true
+
+          for SCHEME in "${SCHEMES[@]}"; do
+            echo "Building scheme: $SCHEME"
+            xcodebuild -workspace "EssentialApp.xcworkspace" \
+                       -scheme "$SCHEME" \
+                       -configuration Debug \
+                       clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
+            if [ ${PIPESTATUS[0]} -ne 0 ]; then
+              BUILD_SUCCESS=false
+              echo "Build failed for scheme: $SCHEME"
+              break
+            fi
+          done
+
+          echo "BUILD_SUCCESS=$BUILD_SUCCESS" >> $GITHUB_ENV
+
+      - name: Update PR Checklist with Build Status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_SUCCESS: ${{ env.BUILD_SUCCESS }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          OWNER=${{ github.repository_owner }}
+          REPO=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+
+          # Read the updated body from the previous step
+          BODY=$(cat updated_body.txt)
+
+          # Define the checklist items
+          UNCHECKED_ITEM='- [ ] Does your code build for all of the debug targets?'
+          CHECKED_ITEM='- [x] Does your code build for all of the debug targets?'
+
+          # Escape special characters for sed
+          UNCHECKED_ITEM_ESCAPED=$(printf '%s\n' "$UNCHECKED_ITEM" | sed 's/[][\/.^$*]/\\&/g')
+          CHECKED_ITEM_ESCAPED=$(printf '%s\n' "$CHECKED_ITEM" | sed 's/[][\/.^$*]/\\&/g')
+
+          # Update the PR body based on build success
+          if [ "$BUILD_SUCCESS" = "true" ]; then
+            UPDATED_BODY=$(echo "$BODY" | sed "s/$UNCHECKED_ITEM_ESCAPED/$CHECKED_ITEM/g")
+          else
+            UPDATED_BODY=$(echo "$BODY" | sed "s/$CHECKED_ITEM_ESCAPED/$UNCHECKED_ITEM/g")
+          fi
+
+          # Prepare JSON data using jq to handle escaping
+          JSON_DATA=$(jq -n --arg body "$UPDATED_BODY" '{body: $body}')
+
+          # Update the PR description
+          curl -s -X PATCH -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$JSON_DATA" \
+            "https://api.github.com/repos/$OWNER/$REPO/pulls/$PR_NUMBER"
