@@ -1,4 +1,4 @@
-name: Update PR Checklist
+name: Update PR Checklist Workflow 
 
 on:
   pull_request:
