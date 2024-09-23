@@ -9,6 +9,7 @@ import Foundation
 
 public final class FeedItemsMapper {
     private struct Root: Decodable {
+        // Add Test comment to create build error
         private let items: [RemoteFeedItem]
         
         private struct RemoteFeedItem: Decodable {
