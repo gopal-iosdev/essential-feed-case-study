@@ -15,6 +15,7 @@ public protocol FeedViewControllerDelegate {
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     public var delegate: FeedViewControllerDelegate?
 
+    /// Add test comment to create a build error here on Github
     @IBOutlet private(set) public var errorView: ErrorView?
 
     private var loadingControllers = [IndexPath: FeedImageCellController]()
