@@ -58,7 +58,7 @@ jobs:
         run: |
           set -eo pipefail
 
-          # Install xcpretty if not installed
+          # Install xcpretty if not installed, test comment
           if ! command -v xcpretty > /dev/null; then
             sudo gem install xcpretty
           fi
