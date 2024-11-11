@@ -18,7 +18,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 
         sut.simulateAppearance()
 
-        XCTAssertEqual(sut.title, feedViewTitle)
+        XCTAssertEqual(sut.title, feedTitle)
     }
 
     func test_loadFeedActions_requestFeedFromLoader() {
