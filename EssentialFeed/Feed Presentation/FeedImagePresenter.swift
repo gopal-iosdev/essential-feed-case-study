@@ -25,31 +25,48 @@ public final class FeedImagePresenter<View: FeedImageView, Image> where View.Ima
     public func didStartLoadingImageData(for model: FeedImage) {
         view.display(
             FeedImageViewModel(
-            description: model.description,
-            location: model.location,
-            image: nil,
-            isLoading: true,
-            shouldRetry: false)
+                description: model.description,
+                location: model.location,
+                image: nil,
+                isLoading: true,
+                shouldRetry: false
+            )
         )
     }
 
     public func didFinishLoadingImageData(with data: Data, for model: FeedImage) {
         let image = imageTransformer(data)
         let shouldRetry = (image == nil)
-        view.display(FeedImageViewModel(
-            description: model.description,
-            location: model.location,
-            image: image,
-            isLoading: false,
-            shouldRetry: shouldRetry))
+        view.display(
+            FeedImageViewModel(
+                description: model.description,
+                location: model.location,
+                image: image,
+                isLoading: false,
+                shouldRetry: shouldRetry
+            )
+        )
     }
 
     public func didFinishLoadingImageData(with error: Error, for model: FeedImage) {
-        view.display(FeedImageViewModel(
-            description: model.description,
-            location: model.location,
+        view.display(
+            FeedImageViewModel(
+                description: model.description,
+                location: model.location,
+                image: nil,
+                isLoading: false,
+                shouldRetry: true
+            )
+        )
+    }
+    
+    public static func map(_ image: FeedImage) -> FeedImageViewModel<Image> {
+        FeedImageViewModel(
+            description: image.description,
+            location: image.location,
             image: nil,
             isLoading: false,
-            shouldRetry: true))
+            shouldRetry: false
+        )
     }
 }
