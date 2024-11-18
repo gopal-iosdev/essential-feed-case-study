@@ -1,0 +1,2 @@
+/* "Error message displayed when we can't load the image feed from the server" */
+"GENERIC_CONNECTION_ERROR" = "Não foi possível conectar com o servidor";
