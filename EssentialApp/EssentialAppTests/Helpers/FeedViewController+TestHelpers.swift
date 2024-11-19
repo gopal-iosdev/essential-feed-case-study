@@ -1,5 +1,5 @@
 //
-//  FeedViewController+TestHelpers.swift
+//  ListViewController+TestHelpers.swift
 //  EssentialFeediOSTests
 //
 //  Created by Gopal Gurram on 2/29/24.
@@ -8,7 +8,7 @@
 import UIKit
 import EssentialFeediOS
 
-extension FeedViewController {
+extension ListViewController {
 
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
