@@ -6,30 +6,55 @@
 //
 
 import XCTest
+import EssentialFeediOS
+@testable import EssentialFeed
 
 final class ImageCommentsSnapshotTests: XCTestCase {
+    
+    func test_listWithComments() {
+        let sut = makeSUT()
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut.display(comments())
+
+        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "IMAGE_COMMENTS_light")
+        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "IMAGE_COMMENTS_dark")
     }
+    
+    // MARK: - Helpers
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    private func makeSUT() -> ListViewController {
+        let bundle = Bundle(for: ListViewController.self)
+        let storyboard = UIStoryboard(name: "ImageComments", bundle: bundle)
+        let controller = storyboard.instantiateInitialViewController() as! ListViewController
+        controller.loadViewIfNeeded()
+        controller.tableView.showsVerticalScrollIndicator = false
+        controller.tableView.showsHorizontalScrollIndicator = false
+        return controller
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    private func comments() -> [CellController] {
+        [
+            ImageCommentCellController(
+                model: ImageCommentViewModel(
+                    message: "The East Side Gallery is an open-air gallery in Berlin. It consists of a series of murals painted directly on a 1,316 m long remnant of the Berlin Wall, located near the centre of Berlin, on Mühlenstraße in Friedrichshain-Kreuzberg. The gallery has official status as a Denkmal, or heritage-protected landmark.",
+                    date: "1000 years ago",
+                    username: "a long long long long long long username"
+                )
+            ),
+            ImageCommentCellController(
+                model: ImageCommentViewModel(
+                    message: "Garth Pier is a Grade II listed structure in Bangor, Gwynedd, North Wales.",
+                    date: "10 days ago",
+                    username: "a username"
+                )
+            ),
+            ImageCommentCellController(
+                model: ImageCommentViewModel(
+                    message: "nice",
+                    date: "1 hour ago",
+                    username: "a."
+                )
+            )
+        ]
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
