@@ -43,9 +43,13 @@ extension ListViewController {
     func renderedFeedImageData(at index: Int) -> Data? {
         simulateFeedImageViewVisible(at: index)?.renderedImage
     }
+    
+    func simulateErrorViewTap() {
+        errorView.simulateTap()
+    }
 
     var errorMessage: String? {
-        errorView?.message
+        errorView.message
     }
 
     var isShowingLoadingIndicator: Bool {
