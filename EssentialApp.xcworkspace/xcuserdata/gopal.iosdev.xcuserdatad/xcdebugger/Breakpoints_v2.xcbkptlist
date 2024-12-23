@@ -7,80 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E9E724A4-7834-46E5-BE26-737E2EDC97F6"
+            uuid = "ABF0706B-25C7-4E2F-85AF-9C00288BB8EC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EssentialFeediOS/Shared UI/Controllers/ListViewController.swift"
+            filePath = "EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "display(_:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "simulateAppearance()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D1D7B60A-A71D-4F7B-BC33-09BA424B3722"
+            uuid = "75D6FAC7-3D3A-48FE-8F76-8F23BA21824B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EssentialFeed/Shared Presentation/LoadResourcePresenter.swift"
+            filePath = "EssentialApp/EssentialAppTests/Helpers/FeedUIIntegrationTests+LoaderSpy.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "didStartLoading()"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "loadImageData(from:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AA080CDB-A2A9-45E3-A094-4B5D496058D0"
+            uuid = "CDD74213-A7E6-4623-B74A-85DA661480BF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EssentialFeed/Shared Presentation/LoadResourcePresenter.swift"
+            filePath = "EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "didFinishLoading(with:)"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "simulateAppearance()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7FA252EE-7CAB-4146-9459-79CC64339468"
+            uuid = "56D5A85B-9026-4943-84B4-284AB461C58C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EssentialFeed/Shared Presentation/LoadResourcePresenter.swift"
+            filePath = "EssentialApp/EssentialAppTests/FeedUIIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "didFinishLoading(with:)"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "test_feedImageView_loadsImageURLWhenVisible()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "46C49BD8-9E4A-4551-A200-A0664F95D308"
+            uuid = "0F8ABF7B-5EDB-43A1-897E-EE4AF49EE86B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EssentialApp/EssentialApp/LoadResourcePresentationAdapter.swift"
+            filePath = "EssentialApp/EssentialAppTests/FeedUIIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "loadResource()"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "test_feedImageView_loadsImageURLWhenVisible()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E87EE9B6-E478-4FB9-980C-3DC4B996C304"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "numberOfRenderedFeedImageViews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
