@@ -13,6 +13,7 @@ extension UIView {
         container.backgroundColor = .clear
         container.addSubview(self)
         
+        translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: container.leadingAnchor),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),

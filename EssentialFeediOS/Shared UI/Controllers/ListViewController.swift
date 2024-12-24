@@ -24,35 +24,38 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataSource.defaultRowAnimation = .fade
-        tableView.dataSource = dataSource
+        configureTableView()
+        configureTraitCollectionObservers()
 
         onViewIsAppearing = { vc in
             vc.onViewIsAppearing = nil
-            vc.configureErrorView()
             vc.refresh()
         }
     }
     
-    private func configureErrorView() {
-        let container = UIView()
-        container.backgroundColor = .clear
-        container.addSubview(errorView)
-        
-        errorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            errorView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: errorView.trailingAnchor),
-            errorView.topAnchor.constraint(equalTo: container.topAnchor),
-            container.bottomAnchor.constraint(equalTo: errorView.bottomAnchor)
-        ])
-        
-        tableView.tableHeaderView = container
+    public override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+
+        onViewIsAppearing?(self)
+    }
+    
+    private func configureTableView() {
+        dataSource.defaultRowAnimation = .fade
+        tableView.dataSource = dataSource
+        tableView.tableHeaderView = errorView.makeContainer()
         
         errorView.onHide = { [weak self] in
             self?.tableView.beginUpdates()
             self?.tableView.sizeTableViewHeaderToFit()
             self?.tableView.endUpdates()
+        }
+    }
+    
+    private func configureTraitCollectionObservers() {
+        registerForTraitChanges(
+            [UITraitPreferredContentSizeCategory.self]
+        ) { (self: Self, previous: UITraitCollection) in
+            self.tableView.reloadData()
         }
     }
 
@@ -64,12 +67,6 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
 
     @IBAction private func refresh() {
         onRefresh?()
-    }
-
-    public override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-
-        onViewIsAppearing?(self)
     }
 
     public func display(_ cellControllers: [CellController]) {
