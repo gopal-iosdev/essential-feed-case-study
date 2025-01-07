@@ -1,14 +1,28 @@
 //
 //  ListViewController+TestHelpers.swift
-//  EssentialFeediOSTests
+//  EssentialAppTests
 //
-//  Created by Gopal Gurram on 2/29/24.
+//  Created by Gopal Rao Gurram on 1/7/25.
 //
 
 import UIKit
 import EssentialFeediOS
 
 extension ListViewController {
+    
+    private class FakeRefreshControl: UIRefreshControl {
+        private var _isRefreshing = false
+
+        override var isRefreshing: Bool { _isRefreshing }
+
+        override func beginRefreshing() {
+            _isRefreshing = true
+        }
+
+        override func endRefreshing() {
+            _isRefreshing = false
+        }
+    }
 
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
@@ -113,19 +127,5 @@ extension ListViewController {
 
     private var feedImagesSection: Int {
         0
-    }
-}
-
-private class FakeRefreshControl: UIRefreshControl {
-    private var _isRefreshing = false
-
-    override var isRefreshing: Bool { _isRefreshing }
-
-    override func beginRefreshing() {
-        _isRefreshing = true
-    }
-
-    override func endRefreshing() {
-        _isRefreshing = false
     }
 }
