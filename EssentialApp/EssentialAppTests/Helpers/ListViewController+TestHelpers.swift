@@ -10,23 +10,20 @@ import EssentialFeediOS
 
 extension ListViewController {
     
-    private class FakeRefreshControl: UIRefreshControl {
-        private var _isRefreshing = false
-
-        override var isRefreshing: Bool { _isRefreshing }
-
-        override func beginRefreshing() {
-            _isRefreshing = true
-        }
-
-        override func endRefreshing() {
-            _isRefreshing = false
-        }
-    }
-
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
         feedImageView(at: index) as? FeedImageCell
+    }
+    
+    @discardableResult
+    func simulateFeedImageBecomingVisibleAgain(at row: Int) -> FeedImageCell? {
+        let view = simulateFeedImageViewNotVisible(at: row)
+        
+        let delegate = tableView.delegate
+        let index = IndexPath(row: row, section: feedImagesSection)
+        delegate?.tableView?(tableView, willDisplay: view!, forRowAt: index)
+        
+        return view
     }
 
     @discardableResult
@@ -105,6 +102,20 @@ extension ListViewController {
         }
 
         refreshControl = fakeRefreshControl
+    }
+    
+    private class FakeRefreshControl: UIRefreshControl {
+        private var _isRefreshing = false
+
+        override var isRefreshing: Bool { _isRefreshing }
+
+        override func beginRefreshing() {
+            _isRefreshing = true
+        }
+
+        override func endRefreshing() {
+            _isRefreshing = false
+        }
     }
 
     func simulateUserInitiatedFeedReload() {
