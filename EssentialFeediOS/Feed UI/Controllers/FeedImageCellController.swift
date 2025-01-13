@@ -39,7 +39,7 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         cell?.onRetry = { [weak self] in
             self?.delegate.didRequestImage()
         }
-        cell?.onReUse = { [weak self] in
+        cell?.onReuse = { [weak self] in
             self?.releaseCellForReuse()
         }
         delegate.didRequestImage()
@@ -70,6 +70,7 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
     }
     
     private func releaseCellForReuse() {
+        cell?.onReuse = nil
         cell = nil
     }
 }
