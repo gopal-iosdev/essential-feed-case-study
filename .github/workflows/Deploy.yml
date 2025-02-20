@@ -1,21 +1,31 @@
+
 name: Deploy
 
+# Controls when the action will run. 
+# Triggers the workflow on push events but only for the main branch.
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build-and-deploy"
   build-and-deploy:
-    runs-on: macos-latest
+    # The type of runner that the job will run on
+    runs-on: macos-15
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v2
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v4
 
     - name: Install provisioning profile
       run: |
-        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/EssentialAppDistribution.mobileprovision .github/deployment/profile.mobileprovision.gpg
+        gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.SECRET_KEY }}" --output .github/deployment/profile.mobileprovision .github/deployment/profile.mobileprovision.gpg
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp .github/deployment/EssentialAppDistribution.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+        cp .github/deployment/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
     - name: Install keychain certificate
       run: |
@@ -28,41 +38,21 @@ jobs:
         security set-key-partition-list -S apple-tool:,apple: -s -k "" ~/Library/Keychains/build.keychain
 
     - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_15.3.app
-
+      run: sudo xcode-select -switch /Applications/Xcode_16.2.app
+      
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - name: Fetch current project version
+    - name: Set build number
       run: |
-        cd EssentialApp
-        currentProjectVersion=$(xcrun agvtool what-version -terse)
-        echo "Current project version for EssentialApp and EssentialAppTests: $currentProjectVersion"
-
-    - name: Increment project version
-      run: |
-        cd EssentialApp
-        xcrun agvtool next-version -all
-        updatedProjectVersion=$(xcrun agvtool what-version -terse)
-        echo "Updated project version for EssentialApp and EssentialAppTests: $updatedProjectVersion"
-
-    - name: Commit and Push Changes
-      run: |
-        cd EssentialApp
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add .
-        git commit -m "Increment project version to $updatedProjectVersion"
-        git push origin main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        buildNumber=$(($GITHUB_RUN_NUMBER + 1))
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "EssentialApp/EssentialApp/Info.plist"
 
     - name: Build
-      run: |
-        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER="EssentialAppDistribution" CODE_SIGN_IDENTITY="iPhone Distribution" -allowProvisioningUpdates
-
+      run: xcodebuild clean archive -sdk iphoneos -workspace EssentialApp/EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive"
+    
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa
-
+      
     - name: Deploy
       run: xcrun altool --upload-app --type ios --file "DerivedData/ipa/EssentialApp.ipa" --username "${{ secrets.APPSTORE_USERNAME }}" --password "${{ secrets.APPSTORE_PASSWORD }}" --verbose
