@@ -1,15 +1,23 @@
+
 name: Deploy
 
+# Controls when the action will run. 
+# Triggers the workflow on push events but only for the master branch.
 on:
   push:
     branches: [ main ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build-and-deploy"
   build-and-deploy:
-    runs-on: macos-latest
+    # The type of runner that the job will run on
+    runs-on: macos-15
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v2
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v4
 
     - name: Install provisioning profile
       run: |
@@ -58,8 +66,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build
-      run: |
-        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER="EssentialAppDistribution" CODE_SIGN_IDENTITY="iPhone Distribution" -allowProvisioningUpdates
+      run: xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive"
 
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa

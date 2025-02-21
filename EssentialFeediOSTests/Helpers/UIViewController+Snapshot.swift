@@ -19,41 +19,32 @@ struct SnapshotConfiguration {
     let layoutMargins: UIEdgeInsets
     let traitCollection: UITraitCollection
 
-    static func iPhone15Pro(
+    static func iPhone(
         style: UIUserInterfaceStyle,
         contentSize: UIContentSizeCategory = .medium
     ) -> SnapshotConfiguration {
         SnapshotConfiguration(
-            size: CGSize(width: 430, height: 932),
+            size: CGSize(width: 390, height: 844),
             safeAreaInsets: UIEdgeInsets(top: 47, left: 0, bottom: 34, right: 0),
-            layoutMargins: UIEdgeInsets(top: 47, left: 16, bottom: 34, right: 16),
-            traitCollection: iPhone15ProTraitCollection(
-                for: style,
-                contentSize: contentSize
-            )
+            layoutMargins: UIEdgeInsets(top: 55, left: 8, bottom: 42, right: 8),
+            traitCollection: UITraitCollection(mutations: { traits in
+                traits.forceTouchCapability = .unavailable
+                traits.layoutDirection = .leftToRight
+                traits.preferredContentSizeCategory = contentSize
+                traits.userInterfaceIdiom = .phone
+                traits.horizontalSizeClass = .compact
+                traits.verticalSizeClass = .regular
+                traits.displayScale = 3
+                traits.accessibilityContrast = .normal
+                traits.displayGamut = .P3
+                traits.userInterfaceStyle = style
+            })
         )
-    }
-
-    private static func iPhone15ProTraitCollection(
-        for style: UIUserInterfaceStyle,
-        contentSize: UIContentSizeCategory
-    ) -> UITraitCollection {
-        UITraitCollection { traits in
-            traits.forceTouchCapability = .available
-            traits.layoutDirection = .leftToRight
-            traits.preferredContentSizeCategory = contentSize
-            traits.userInterfaceIdiom = .phone
-            traits.horizontalSizeClass = .compact
-            traits.verticalSizeClass = .regular
-            traits.displayScale = 3
-            traits.displayGamut = .P3
-            traits.userInterfaceStyle = style
-        }
     }
 }
 
 private final class SnapshotWindow: UIWindow {
-    private var configuration: SnapshotConfiguration = .iPhone15Pro(style: .light)
+    private var configuration: SnapshotConfiguration = .iPhone(style: .light)
 
     convenience init(configuration: SnapshotConfiguration, root: UIViewController) {
         self.init(frame: CGRect(origin: .zero, size: configuration.size))
