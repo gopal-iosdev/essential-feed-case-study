@@ -41,7 +41,6 @@ struct SnapshotConfiguration {
             })
         )
     }
-    }
 }
 
 private final class SnapshotWindow: UIWindow {
