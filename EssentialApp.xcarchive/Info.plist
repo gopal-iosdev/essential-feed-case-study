@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/EssentialApp.app</string>
+		<key>Architectures</key>
+		<array>
+			<string>arm64</string>
+		</array>
+		<key>CFBundleIdentifier</key>
+		<string>com.unownedself.EssentialApp</string>
+		<key>CFBundleShortVersionString</key>
+		<string>1.0</string>
+		<key>CFBundleVersion</key>
+		<string>21</string>
+		<key>SigningIdentity</key>
+		<string>Apple Distribution: Gopal Rao Gurram (UEQ95NQCUE)</string>
+		<key>Team</key>
+		<string>UEQ95NQCUE</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2025-02-21T13:13:17Z</date>
+	<key>Name</key>
+	<string>EssentialApp</string>
+	<key>SchemeName</key>
+	<string>EssentialApp</string>
+</dict>
+</plist>
