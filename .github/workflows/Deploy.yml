@@ -59,8 +59,18 @@ jobs:
 
     - name: Build
       run: |
-        xcodebuild clean archive -sdk iphoneos -workspace EssentialApp.xcworkspace -configuration "Release" -scheme "EssentialApp" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/EssentialApp.xcarchive" CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER="EssentialAppDistribution" CODE_SIGN_IDENTITY="iPhone Distribution" -allowProvisioningUpdates
-
+        xcodebuild clean archive \
+        -sdk iphoneos \
+        -workspace EssentialApp.xcworkspace \
+        -configuration "Release" \
+        -scheme "EssentialApp" \
+        -derivedDataPath "DerivedData" \
+        -archivePath "DerivedData/Archive/EssentialApp.xcarchive" \
+        CODE_SIGN_STYLE=Manual \
+        CODE_SIGN_IDENTITY="iPhone Distribution" \
+        PROVISIONING_PROFILE_SPECIFIER="EssentialAppDistribution" \
+        -target "EssentialApp" \
+        -allowProvisioningUpdates
     - name: Export
       run: xcodebuild -exportArchive -archivePath DerivedData/Archive/EssentialApp.xcarchive -exportOptionsPlist .github/deployment/ExportOptions.plist -exportPath DerivedData/ipa
 
