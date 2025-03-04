@@ -6,17 +6,7 @@
 //
 
 import XCTest
-
-enum FeedEndpoint {
-    case get
-    
-    func url(baseURL: URL) -> URL {
-        switch self {
-        case .get:
-            return baseURL.appendingPathComponent("/v1/feed")
-        }
-    }
-}
+import EssentialFeed
 
 final class FeedEndpointTests: XCTestCase {
     
