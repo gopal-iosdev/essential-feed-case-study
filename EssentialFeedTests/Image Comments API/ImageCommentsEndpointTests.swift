@@ -8,17 +8,6 @@
 import XCTest
 import EssentialFeed
 
-enum ImageCommentsEndpoint {
-    case get(UUID)
-    
-    func url(baseURL: URL) -> URL {
-        switch self {
-        case .get(let id):
-            return baseURL.appendingPathComponent("/v1/image/\(id)/comments")
-        }
-    }
-}
-
 final class ImageCommentsEndpointTests: XCTestCase {
     
     func test_imageComments_endpointURL() {
