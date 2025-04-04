@@ -16,7 +16,8 @@ final class ImageCommentsMapperTests: XCTestCase {
             let json = makeItemsJSON([])
             
             XCTAssertThrowsError(
-                try ImageCommentsMapper.map(json, from: HTTPURLResponse(statusCode: code))
+                try ImageCommentsMapper.map(json, from: HTTPURLResponse(statusCode: code)),
+                "code is \(code)"
             )
         })
     }
@@ -27,7 +28,8 @@ final class ImageCommentsMapperTests: XCTestCase {
             let invalidJSON = Data("invalid json".utf8)
             
             XCTAssertThrowsError(
-                try ImageCommentsMapper.map(invalidJSON, from: HTTPURLResponse(statusCode: code))
+                try ImageCommentsMapper.map(invalidJSON, from: HTTPURLResponse(statusCode: code)),
+                "code is \(code)"
             )
         })
     }
@@ -39,7 +41,7 @@ final class ImageCommentsMapperTests: XCTestCase {
             
             let result = try ImageCommentsMapper.map(emptyListJSON, from: HTTPURLResponse(statusCode: code))
 
-            XCTAssertEqual(result, [])
+            XCTAssertEqual(result, [], "code is \(code)")
         })
     }
 
@@ -64,7 +66,7 @@ final class ImageCommentsMapperTests: XCTestCase {
             
             let result = try ImageCommentsMapper.map(json, from: HTTPURLResponse(statusCode: code))
 
-            XCTAssertEqual(result, items)
+            XCTAssertEqual(result, items, "code is \(code)")
         })
     }
 
