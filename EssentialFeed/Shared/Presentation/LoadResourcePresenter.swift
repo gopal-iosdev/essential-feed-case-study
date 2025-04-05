@@ -41,6 +41,17 @@ public final class LoadResourcePresenter<Resource, View: ResourceView> {
         self.errorView = errorView
         self.mapper = mapper
     }
+    
+    public init(
+        resourceView: View,
+        loadingView: ResourceLoadingView,
+        errorView: ResourceErrorView
+    ) where Resource == View.ResourceViewModel {
+        self.resourceView = resourceView
+        self.loadingView = loadingView
+        self.errorView = errorView
+        self.mapper = { $0 }
+    }
 
     public func didStartLoading() {
         errorView.display(.noError)
