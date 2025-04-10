@@ -234,13 +234,13 @@ class FeedUIIntegrationTests: XCTestCase {
         loader.completeFeedLoading()
         
         sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(sut.loadMoreErrorMessage, nil)
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, nil)
 
         loader.completeLoadMoreWithError(at: 0)
-        XCTAssertEqual(sut.loadMoreErrorMessage, loadError)
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, loadError)
 
         sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(sut.loadMoreErrorMessage, nil)
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, nil)
     }
     
     func test_tapOnLoadMoreErrorView_loadsMore() {
