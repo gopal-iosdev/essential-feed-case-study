@@ -92,12 +92,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         last: FeedImage?
     ) -> AnyPublisher<Paginated<FeedImage>, Error> {
         makeRemoteFeedLoader(after: last)
-            .caching(to: localFeedLoader)
             .fallback(to: localFeedLoader.loadPublisher)
             .map { newItems in
                 (items + newItems, newItems.last)
             }
             .map(makePage)
+            .caching(to: localFeedLoader)
             .eraseToAnyPublisher()
     }
     
