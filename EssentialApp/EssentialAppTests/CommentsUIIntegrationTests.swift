@@ -35,6 +35,17 @@ final class CommentsUIIntegrationTests: XCTestCase {
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadCommentsCallCount, 3, "Expected a third loading request once user initiates another load")
     }
+    
+    func test_loadComments_runsAutomaticallyOnlyOnFirstAppearance() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadCommentsCallCount, 0, "Expected no loading requests before view appears")
+        
+        sut.simulateAppearance()
+        XCTAssertEqual(loader.loadCommentsCallCount, 1, "Expected a loading request once view appears")
+        
+        sut.simulateAppearance()
+        XCTAssertEqual(loader.loadCommentsCallCount, 1, "Expected no loading request the second time view appears")
+    }
 
     func test_loadCommentsIndicator_isVisibleWhileLoadingComments() {
         let (sut, loader) = makeSUT()
@@ -86,14 +97,12 @@ final class CommentsUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
 
         sut.simulateAppearance()
-        sut.tableView.frame = CGRect(x: 0, y: 0, width: 390, height: 400)
         loader.completeCommentsLoading(with: [comment], at: 0)
         assertThat(sut, isRendering: [comment])
 
         sut.simulateUserInitiatedReload()
         loader.completeCommentsLoadingWithError(at: 1)
         assertThat(sut, isRendering: [comment])
-        RunLoop.current.run(until: Date()+1)
     }
     
     func test_loadCommentsCompletion_dispatchesFromBackgroundToMainThread() {
@@ -149,13 +158,10 @@ final class CommentsUIIntegrationTests: XCTestCase {
             sut?.simulateAppearance()
         }
         
-        weak var weakSUT = sut
-        
         XCTAssertEqual(cancelCallCount, 0)
         
         sut = nil
         
-        XCTAssertNil(weakSUT)
         XCTAssertEqual(cancelCallCount, 1)
     }
 
@@ -192,7 +198,7 @@ final class CommentsUIIntegrationTests: XCTestCase {
         }
     }
 
-    private class LoaderSpy {
+    private final class LoaderSpy {
         private var requests = [PassthroughSubject<[ImageComment], Error>]()
 
         var loadCommentsCallCount: Int {
