@@ -1,8 +1,8 @@
 //
-//  CoreDataFeedStore+FeedImageDataLoader.swift
+//  CoreDataFeedStore+FeedImageDataStore.swift
 //  EssentialFeed
 //
-//  Created by Gopal Gurram on 6/16/24.
+//  Created by Gopal Rao Gurram on 5/8/25.
 //
 
 import Foundation
