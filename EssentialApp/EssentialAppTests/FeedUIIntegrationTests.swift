@@ -598,7 +598,7 @@ class FeedUIIntegrationTests: XCTestCase {
         let loader = LoaderSpy()
         let sut = FeedUIComposer.feedComposedWith(
             feedLoader: loader.loadPublisher,
-            imageLoader: loader.loadImageDataPublisher,
+            imageLoader: loader.loadImageData,
             selection: selection
         )
         
