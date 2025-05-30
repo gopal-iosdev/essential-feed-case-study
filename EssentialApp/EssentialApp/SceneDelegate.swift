@@ -108,6 +108,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .caching(to: localFeedLoader)
             .fallback(to: localFeedLoader.loadPublisher)
             .map(makeFirstPage)
+            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
@@ -119,6 +120,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             .map(makePage)
             .caching(to: localFeedLoader)
+            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
