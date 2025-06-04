@@ -18,15 +18,20 @@ public final class CoreDataFeedStore {
         case modelNotFound
         case failedToLoadPersistentContainer(Error)
     }
+    
+    public enum ContextQueue {
+        case main
+        case background
+    }
 
-    public init(storeURL: URL) throws {
+    public init(storeURL: URL, contextQueue: ContextQueue = .background) throws {
         guard let model = CoreDataFeedStore.model else {
             throw StoreError.modelNotFound
         }
 
         do {
             container = try NSPersistentContainer.load(name: CoreDataFeedStore.modelName, model: model, url: storeURL)
-            context = container.newBackgroundContext()
+            context = contextQueue == .main ? container.viewContext : container.newBackgroundContext()
         } catch {
             throw StoreError.failedToLoadPersistentContainer(error)
         }
@@ -35,8 +40,7 @@ public final class CoreDataFeedStore {
     func performSync<R>(_ action: (NSManagedObjectContext) -> Result<R, Error>) throws -> R {
         let context = self.context
         var result: Result<R, Error>!
-        context.performAndWait { result = action(context) }
-        
+        result = action(context)
         return try result.get()
     }
     
