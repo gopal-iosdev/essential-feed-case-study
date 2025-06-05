@@ -38,7 +38,6 @@
 		EF540B232D6A0B8300ABED3F /* CommentsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF540B222D6A0B8300ABED3F /* CommentsUIIntegrationTests.swift */; };
 		EF540B252D6A161D00ABED3F /* CommentsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF540B242D6A161D00ABED3F /* CommentsUIComposer.swift */; };
 		EF859B672D2DB9A100FA50B6 /* ListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF859B662D2DB9A100FA50B6 /* ListViewController+TestHelpers.swift */; };
-		EF9696892DCDBFA90005B1A2 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9696882DCDBFA90005B1A2 /* NullStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +99,6 @@
 		EF540B222D6A0B8300ABED3F /* CommentsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		EF540B242D6A161D00ABED3F /* CommentsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIComposer.swift; sourceTree = "<group>"; };
 		EF859B662D2DB9A100FA50B6 /* ListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
-		EF9696882DCDBFA90005B1A2 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				4BE908592C306283001BA094 /* AppDelegate.swift */,
-				EF9696882DCDBFA90005B1A2 /* NullStore.swift */,
 				4BE9085B2C306283001BA094 /* SceneDelegate.swift */,
 				EF4B90F62C8535420077EAB5 /* CombineHelpers.swift */,
 				4B806E152C480A8800D892B4 /* FeedUIComposer.swift */,
@@ -307,7 +304,6 @@
 			files = (
 				4B806E1D2C480A8800D892B4 /* FeedViewAdapter.swift in Sources */,
 				EF4B90F72C8535420077EAB5 /* CombineHelpers.swift in Sources */,
-				EF9696892DCDBFA90005B1A2 /* NullStore.swift in Sources */,
 				4B806E1B2C480A8800D892B4 /* FeedUIComposer.swift in Sources */,
 				4BE9085E2C306283001BA094 /* ViewController.swift in Sources */,
 				EF540B252D6A161D00ABED3F /* CommentsUIComposer.swift in Sources */,
