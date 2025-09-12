@@ -1,0 +1,12 @@
+//
+//  Shared.xcconfig
+//  EssentialFeed
+//
+//  Created by Gopal Rao Gurram on 9/12/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+DEVELOPMENT_TEAM = UEQ95NQCUE
+SWIFT_VERSION = 5.0
