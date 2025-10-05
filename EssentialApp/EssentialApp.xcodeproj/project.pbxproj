@@ -95,7 +95,6 @@
 		4BE908892C3062ED001BA094 /* EssentialApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialApp.xctestplan; sourceTree = "<group>"; };
 		4BE9088B2C306523001BA094 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE9088C2C306523001BA094 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF03C9EA2E746410005B9727 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Shared.xcconfig; path = ../Shared.xcconfig; sourceTree = SOURCE_ROOT; };
 		EF4B90F62C8535420077EAB5 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		EF540B222D6A0B8300ABED3F /* CommentsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		EF540B242D6A161D00ABED3F /* CommentsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIComposer.swift; sourceTree = "<group>"; };
@@ -153,7 +152,6 @@
 		4BE9084D2C306283001BA094 = {
 			isa = PBXGroup;
 			children = (
-				EF03C9EA2E746410005B9727 /* Shared.xcconfig */,
 				EFE9F8D52E92B42E005991F9 /* xcconfig */,
 				4BE908582C306283001BA094 /* EssentialApp */,
 				4BE9086F2C306284001BA094 /* EssentialAppTests */,
@@ -391,7 +389,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFE9F8D22E92B42E005991F9 /* Project-Debug.xcconfig */;
 			buildSettings = {
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -399,7 +396,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFE9F8D32E92B42E005991F9 /* Project-Release.xcconfig */;
 			buildSettings = {
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

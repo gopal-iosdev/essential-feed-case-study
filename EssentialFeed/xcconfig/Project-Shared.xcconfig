@@ -21,6 +21,8 @@
 // For backwards compatibility reasons, this setting is enabled by default. Disabling it
 // is strongly recommended.
 
+#include "../../xcconfig/Shared.xcconfig"
+
 ALWAYS_SEARCH_USER_PATHS = NO
 
 
