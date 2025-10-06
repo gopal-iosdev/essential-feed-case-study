@@ -12,16 +12,6 @@
 ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES
 
 
-
-// Enable Modules (C and Objective-C)
-// 
-// Enables the use of modules for system APIs. System headers are imported as semantic
-// modules instead of raw headers. This can result in faster builds and project indexing.
-
-CLANG_ENABLE_MODULES = YES
-
-
-
 // Code Signing Identity
 // 
 // The name, also known as the *common name*, of a valid code-signing certificate in a

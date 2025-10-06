@@ -13,17 +13,6 @@
 
 BUNDLE_LOADER = $(TEST_HOST)
 
-
-
-// Enable Modules (C and Objective-C)
-// 
-// Enables the use of modules for system APIs. System headers are imported as semantic
-// modules instead of raw headers. This can result in faster builds and project indexing.
-
-CLANG_ENABLE_MODULES = YES
-
-
-
 // Code Signing Style
 // 
 // This setting specifies the method used to acquire and locate signing assets. Choose
