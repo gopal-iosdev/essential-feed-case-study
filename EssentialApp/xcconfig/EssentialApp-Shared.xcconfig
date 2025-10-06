@@ -24,8 +24,6 @@ LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
 
 MARKETING_VERSION = 1.0
 
-PRODUCT_BUNDLE_IDENTIFIER = com.unownedself.EssentialApp
-
 PROVISIONING_PROFILE_SPECIFIER = 
 
 SUPPORTED_PLATFORMS = iphoneos iphonesimulator
