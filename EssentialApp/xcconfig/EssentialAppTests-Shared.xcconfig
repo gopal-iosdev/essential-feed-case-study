@@ -13,17 +13,6 @@
 
 BUNDLE_LOADER = $(TEST_HOST)
 
-// Code Signing Style
-// 
-// This setting specifies the method used to acquire and locate signing assets. Choose
-// `Automatic` to let Xcode automatically create and update profiles, app IDs, and
-// certificates. Choose `Manual` to create and update these yourself on the developer
-// website.
-
-CODE_SIGN_STYLE = Manual
-
-
-
 // Current Project Version
 // 
 // This setting defines the current version of the project. The value must be a integer
