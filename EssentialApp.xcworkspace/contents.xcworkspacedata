@@ -11,6 +11,9 @@
       location = "group:xcconfig"
       name = "xcconfig">
       <FileRef
+         location = "group:Debug.xcconfig">
+      </FileRef>
+      <FileRef
          location = "group:Shared.xcconfig">
       </FileRef>
    </Group>
